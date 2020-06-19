@@ -1,15 +1,17 @@
 
-/* html {
-    max-width: 960px;
-} */
+html {
+    background-color: darkslategrey;
+
+}
 .content {
     max-width: fit-content;
 }
 
 .img {
-    width: 100%;
+    /* width: 100%;
     z-index: 0;
-    align-items: center;
+    align-items: center; */
+
     
 } 
 
@@ -73,10 +75,6 @@ a {
 
 
 
-  footer {
-    background: darkgrey;
-    padding: 2rem 1rem;
-  }
   
   .inside {
     max-width: var(--contentWidth);
