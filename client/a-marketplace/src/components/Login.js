@@ -3,8 +3,7 @@ import {Link, Route} from 'react-router-dom';
 import {Button, Form, Card, CardImg, FormGroup, Input, Label } from 'reactstrap'
 import axios from 'axios'
 import * as yup from 'yup'
-
-
+import SignUp from './SignUp';
 const Login = () => {
     const [loginData, setloginData] = useState ({
         name: "",
@@ -18,9 +17,8 @@ const Login = () => {
 
     const login = () => {
         schema.validate(loginData).then( () => {
-            axios.post('/api/auth/login', loginData).then((res) => {
+            axios.post('https://amp-node-api.herokuapp.com/api/auth/login', loginData).then((res) => {
                 console.log(res.data, "This is the posted data")
-
             })
         })
     } 
@@ -38,7 +36,18 @@ const Login = () => {
                     <legend>Password:</legend>
                     <Input type='password' name='password' value = {loginData.password} onChange = {handleChange} style={{width:'50%', margin:'0 auto'}}></Input>
                 </FormGroup>
-            <Button style={{margin:'10px', backgroundColor:'#fff', color:'#303030'}}> SignUp</Button>
+         
+             <Link to = '/signUp'>
+             <Button style={{margin:'10px', backgroundColor:'#fff', color:'#303030'}}>
+                 Sign Up
+            </Button>
+            </Link>
+            
+            <Route path = '/signUp'>
+              <SignUp/>  
+            </Route>  
+            
+ 
             <Button style={{margin:'10px', backgroundColor:'#e74c3d'}}> Login</Button>
             </Form>
         </>

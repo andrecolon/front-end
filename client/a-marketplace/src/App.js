@@ -1,12 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import Login from './components/Login' 
-function App() {
+import { Button, Navbar, Card, CardImg } from 'reactstrap'
+import { Route, Link } from 'react-router-dom'
+import Login from './components/Login' ;
+import SignUp from './components/SignUp';
+import AddItems from './components/AddItems';
+import ListPage from './components/ListPage';
+
+const App = () => {
   return (
-    <div className="App">
+    <>
+    <Navbar color = 'success'>
+      <h1>African Marketplace</h1>
+      <Link to = {'/'}>
+    <Button>
+      Home
+    </Button>
+      </Link>
+    </Navbar>
       <Login /> 
-    </div>
+   
+      
+      <AddItems />
+      {/* the ListPage component will have a Header component within ListPage.js */}
+      <ListPage />
+    </>
   );
 }
+
 export default App;
