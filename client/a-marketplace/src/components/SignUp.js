@@ -61,6 +61,10 @@ const SignUp = () => {
                 <legend>Password</legend>
                 <Input type = 'password' name = 'password' value = {formData.password} onChange = {handleChange}/> 
             </FormGroup>
+            <FormGroup>
+                <legend>Confirm Password</legend>
+                <Input type = 'password' name = 'password' value = {formData.password} onChange = {handleChange}/> 
+            </FormGroup>
             
             <Button>Submit</Button>
 
