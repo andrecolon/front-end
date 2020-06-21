@@ -19,8 +19,9 @@ const App = () => {
     </Navbar>
       <Login /> 
    
-      
-      <AddItems />
+      <Route exact path = '/AddItems'>
+       <AddItems/>
+       </Route>
       {/* the ListPage component will have a Header component within ListPage.js */}
       <ListPage />
     </>

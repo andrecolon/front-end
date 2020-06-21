@@ -3,6 +3,7 @@ import { Card, CardImg, Form, FormGroup, Input, Label, Button, Dropdown, Dropdow
 import { Route, Link } from 'react-router-dom'
 import axios from 'axios'
 import * as yup from 'yup'
+import AddItems from './AddItems'
 
 const SignUp = () => {
     // const [dropdownOpen, setdropdownOpen] = useState (false)
@@ -44,7 +45,7 @@ const SignUp = () => {
             </h2>
             <CardImg/>
         </Card>
-        <Form onSubmit = {(e) => {
+        <Form  onSubmit = {(e) => {
             e.preventDefault()
             submit()
         }}
@@ -70,7 +71,13 @@ const SignUp = () => {
 
             <p className="forgot-password text-right">
                     Already registered <Link to = '/' >sign in?</Link>
-                </p>
+             </p>
+            <Link to = '/AddItems'>
+             <Button>Add Items</Button>
+             </Link>
+             <Route path = '/AddItems'>
+                <AddItems/>
+             </Route>
         </Form>
         </>
     )

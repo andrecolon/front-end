@@ -17,7 +17,7 @@ const Login = () => {
 
     const login = () => {
         schema.validate(loginData).then( () => {
-            axios.post('https://amp-node-api.herokuapp.com/api/auth/login', loginData).then((res) => {
+            axios.post('https://amp-node-api.herokuapp.com/api/auth/register', loginData).then((res) => {
                 console.log(res.data, "This is the posted data")
             })
         })
