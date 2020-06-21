@@ -42,10 +42,7 @@ const Login = () => {
                  Sign Up
             </Button>
             </Link>
-            
-            <Route path = '/signUp'>
-              <SignUp/>  
-            </Route>  
+        
             
  
             <Button style={{margin:'10px', backgroundColor:'#e74c3d'}}> Login</Button>

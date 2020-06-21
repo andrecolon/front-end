@@ -31,9 +31,8 @@ const AddItems = () => {
     return(
         <>
         <Card>
-            <h2>Add Your Item</h2>
-           
-        </Card >
+            <h2 style={{color: 'black', margin:'0 auto'}}>Add Your Item</h2>
+         </Card>
         <Form  onSubmit = {(e) => {
             e.preventDefault()
             submit()

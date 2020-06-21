@@ -17,11 +17,19 @@ const App = () => {
     </Button>
       </Link>
     </Navbar>
-      <Login /> 
-   
-      <Route exact path = '/AddItems'>
+    <Route exact path = '/'>
+    </Route>
+    <Route exact path = '/'>
+      <Login />
+     </Route>
+      <Route exact path = '/SignUp'>
+        <SignUp/>  
+      </Route>  
+
+      <Route path = '/AddItems'>
        <AddItems/>
        </Route>
+
       {/* the ListPage component will have a Header component within ListPage.js */}
       <ListPage />
     </>

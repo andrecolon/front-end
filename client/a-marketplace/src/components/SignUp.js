@@ -39,8 +39,8 @@ const SignUp = () => {
 
     return (
         <>
-        <Card color= 'warning'>
-            <h2 style = {{color: 'black'}}>
+        <Card>
+            <h2 style = {{color: 'black', margin:'0 auto'}}>
                 Sign Up
             </h2>
             <CardImg/>
@@ -49,7 +49,7 @@ const SignUp = () => {
             e.preventDefault()
             submit()
         }}
-        style = {{margin:'5%'}}>
+        style = {{width: '50%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white'}}>
             <FormGroup>
                 <legend>Full Name</legend>
                 <Input type = 'name' name= 'name' value = {formData.name} onChange = {handleChange}/>
@@ -75,9 +75,7 @@ const SignUp = () => {
             <Link to = '/AddItems'>
              <Button>Add Items</Button>
              </Link>
-             <Route path = '/AddItems'>
-                <AddItems/>
-             </Route>
+            
         </Form>
         </>
     )
