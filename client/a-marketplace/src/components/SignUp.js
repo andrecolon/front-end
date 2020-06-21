@@ -49,7 +49,7 @@ const SignUp = () => {
             e.preventDefault()
             submit()
         }}
-        style = {{width: '50%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white'}}>
+        style = {{width: '50%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white', padding: '25px'}}>
             <FormGroup>
                 <legend>Full Name</legend>
                 <Input type = 'name' name= 'name' value = {formData.name} onChange = {handleChange}/>
