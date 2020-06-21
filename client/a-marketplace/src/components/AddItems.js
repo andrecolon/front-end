@@ -31,7 +31,7 @@ const AddItems = () => {
     return(
         <>
         <Card>
-            <h2 style= {{margin:'50%'}}>Add Your Item</h2>
+            <h2>Add Your Item</h2>
            
         </Card >
         <Form  onSubmit = {(e) => {
