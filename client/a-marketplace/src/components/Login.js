@@ -34,8 +34,11 @@ const Login = () => {
                     <legend>Password:</legend>
                     <Input type='password' name='password' style={{width:'50%', margin:'0 auto'}}></Input>
                 </FormGroup>
-            <Button style={{margin:'10px', backgroundColor:'#fff', color:'#303030'}}> SignUp</Button>
-            <Button style={{margin:'10px', backgroundColor:'#e74c3d'}}> Login</Button>
+
+                <Link to = '/SignUp'>
+            <Button style={{margin:'10px', backgroundColor:'#fff', color:'#303030'}}> SignUp </Button>
+            </Link>
+            <Link to='/ListPage'><Button style={{margin:'10px', backgroundColor:'#e74c3d'}}> Login</Button></Link>
             </Form>
         </>
     )
