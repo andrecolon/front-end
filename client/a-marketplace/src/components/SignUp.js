@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Card, CardImg, Form, FormGroup, Input, Label, Button, Dropdown, DropdownMenu } from 'reactstrap'
+import { Jumbotron, Card, CardImg, Form, FormGroup, Input, Label, Button, Dropdown, DropdownMenu } from 'reactstrap'
 import { Route, Link } from 'react-router-dom'
 import axios from 'axios'
 import * as yup from 'yup'
@@ -39,8 +39,8 @@ const SignUp = () => {
 
     return (
         <>
-        <Card>
-            <h2 style = {{color: 'black', margin:'0 auto'}}>
+        <Card style = {{backgroundColor:'#303030', padding: '40px'}}>
+            <h2 style = {{ margin:'0 auto', fontFamily:'Monoton', color:'#e74c3d'}}>
                 Sign Up
             </h2>
             <CardImg/>

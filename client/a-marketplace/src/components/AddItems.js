@@ -30,8 +30,8 @@ const AddItems = () => {
 
     return(
         <>
-        <Card>
-            <h2 style={{color: 'black', margin:'0 auto'}}>Add Your Item</h2>
+        <Card style ={{backgroundColor:'#303030', padding: '40px'}}>
+            <h2 style={{fontFamily:'Monoton', color:'#e74c3d', margin:'0 auto'}}>Add Your Item</h2>
          </Card>
         <Form  onSubmit = {(e) => {
             e.preventDefault()

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Navbar, Card, CardImg } from 'reactstrap'
+import { Navbar, NavbarBrand, NavItem, NavLink, NavbarText, Nav, Button} from 'reactstrap'
 import { Route, Link } from 'react-router-dom'
 import Login from './components/Login' ;
 import SignUp from './components/SignUp';
@@ -9,20 +9,22 @@ import ListPage from './components/ListPage';
 const App = () => {
   return (
     <>
-    <Navbar color = 'success'>
-      <h1>African Marketplace</h1>
-      <Link to = {'/'}>
-    <Button>
-      Home
-    </Button>
-      </Link>
-    </Navbar>
+        <Navbar>
+            <NavbarBrand><Link to='/'>AFRICAN MARKET PLACE</Link></NavbarBrand>
+            <Nav>
+                <NavItem>
+                    <Link to='/'>Home</Link>
+                </NavItem>
+            </Nav>
+      </Navbar>
     <Route exact path = '/'>
     </Route>
-    <Route exact path = '/'>
+     
+     <Route exact path = '/'>
       <Login />
      </Route>
-      <Route exact path = '/SignUp'>
+
+      <Route exact path ='/SignUp'>
         <SignUp/>  
       </Route>  
 
@@ -31,7 +33,10 @@ const App = () => {
        </Route>
 
       {/* the ListPage component will have a Header component within ListPage.js */}
+      <Route exact path = '/ListPage'>
       <ListPage />
+      </Route>
+      
     </>
   );
 }
