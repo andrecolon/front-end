@@ -43,10 +43,18 @@ const AddItems = () => {
             <Input type = 'name' name= 'name' value={itemData.name} onChange = {handleChange}/>
             </FormGroup> 
         
+      <FormGroup>
+           <legend>Price</legend>
+           <Input type = 'price' name = 'price' value = {itemData.price} onChange = {handleChange}/>
+       </FormGroup>
+
        <FormGroup>
            <legend>Item Description</legend>
            <Input type = 'textarea' name = 'itemDes' value = {itemData.itemDes} onChange = {handleChange}/>
        </FormGroup>
+
+       
+
        <Button>Submit</Button>
         </Form>
         
