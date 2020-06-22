@@ -3,6 +3,7 @@ import {Link, Route} from 'react-router-dom';
 import {Button, Form, Card, CardImg, FormGroup, Input, Label } from 'reactstrap';
 import *as yup from 'yup';
 import axios from 'axios';
+
 const Login = () => {
     const [loginData, setloginData] = useState ({
         name: "",
@@ -33,6 +34,7 @@ const Login = () => {
                     <legend>Password:</legend>
                     <Input type='password' name='password' style={{width:'50%', margin:'0 auto'}}></Input>
                 </FormGroup>
+
                 <Link to = '/SignUp'>
             <Button style={{margin:'10px', backgroundColor:'#fff', color:'#303030'}}> SignUp </Button>
             </Link>
