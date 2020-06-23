@@ -10,14 +10,6 @@ const ListPage = () => {
     
     return(
         <div style={{backgroundColor:'#e74c3d'}}>
-            {/* <Navbar>
-                <NavbarBrand><Link to='/'>AFRICAN MARKET PLACE</Link></NavbarBrand>
-            <Nav>
-                <NavItem>
-                    <Link to='/listpage'>List Page</Link>
-                </NavItem>
-            </Nav>
-            </Navbar> */}
             <Jumbotron fluid style={{backgroundColor:'#303030'}}>
                 <Container>
                     <h1 className='display-3' style={{color:'#fff'}}><span style={{fontFamily:'Monoton', color:'#e74c3d'}}>African</span> MARKETPLACE</h1>
