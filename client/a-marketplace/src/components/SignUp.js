@@ -7,17 +7,12 @@ import * as yup from 'yup'
 
 const SignUp = () => {
     const [post, setPost] = useState([]);
-
-    // managing state for our form inputs
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
     const [formState, setFormState] = useState({
         name: "",
         email: "",
         password: ""
-
     });
-
-    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-
     const [errors, setErrors] = useState({
         name: "",
         email: "",
@@ -54,11 +49,10 @@ const SignUp = () => {
         });
     }, [formState]);
 
-    // onSubmit function
     const formSubmit = e => {
         e.preventDefault();
         axiosWithAuth()
-            .post("/api/auth/register", formState)
+            .post("/auth/register", formState)
             .then(response => {
                 setPost(response.data);
                 setFormState({
@@ -67,7 +61,8 @@ const SignUp = () => {
                     password: "",
                 });
             })
-            .catch(err => console.log(err.response));
+            .catch(err => console.error(console.error,
+                err.response));
     };
 
     // onChange function
@@ -96,51 +91,40 @@ const SignUp = () => {
             <FormGroup>
                 <legend>Full Name</legend>
                 <Input 
-                type = 'name' 
-                name= 'name' 
-                        value={formState.name} 
+                type='name' 
+                name='name' 
+                value={formState.name} 
                 onChange = {handleChange}
                 />
             </FormGroup>
             <FormGroup>
                 <legend>Email</legend>
                 <Input 
-                type = 'email' 
-                name ='email'
+                type='email' 
+                name='email'
                         value={formState.email} 
-                onChange= {handleChange}
+                onChange={handleChange}
                 />
             </FormGroup>
             <FormGroup>
                 <legend>Password</legend>
                 <Input 
-                type = 'password' 
-                name = 'password' 
+                type='password' 
+                name='password' 
                         value={formState.password} 
-                onChange = {handleChange}
+                onChange={handleChange}
                 /> 
-            </FormGroup>
-            <FormGroup>
-                <legend>Confirm Password</legend>
-                <Input 
-                type = 'password' 
-                name = 'password'
-                        value={formState.password} 
-                onChange = {handleChange}
-                /> 
-            </FormGroup>
-            
+            </FormGroup>            
                 <button type="submit" disabled={isButtonDisabled}>
                      Submit
                      </button>
 
-            <p className="forgot-password text-right">
-                    Already registered <Link to = '/' >sign in?</Link>
-             </p>
-
                 <pre>{JSON.stringify(post, null, 2)}</pre>
 
         </Form>
+            <p className="forgot-password text-right">
+                Already registered <Link to='/' >sign in?</Link>
+            </p>
         </>
     )
 }

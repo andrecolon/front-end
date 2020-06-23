@@ -1,21 +1,20 @@
 
 import React, {useState, useEffect} from 'react';
 import { Jumbotron, Container, Card, CardHeader, CardImg, CardTitle, CardText, Button, Navbar, NavbarBrand, NavItem, NavLink, NavbarText} from 'reactstrap';
+// import axios from 'axios'
 import axiosWithAuth from '../components/utils/axiosWithAuth'
-import img1 from '../assets/img1.jpg';
+
 import img2 from '../assets/img2.png';
-import axios from 'axios'
 
 
 // const [state, setState] = useState('[]');
 const ListPage = () => {
-
 const [ services, setServices] = useState('')
 
     useEffect(() => {
         const getData = () => {
             axiosWithAuth()
-                .get(`/api/business`) 
+            .get(`/business`) 
                 .then(res => {
                     console.log(res.data);
                     setServices(res.data)
@@ -26,6 +25,7 @@ const [ services, setServices] = useState('')
         }
         getData()//useEffect is crying for a dependancy value ..oh yeah?!
         // eslint-disable-next-line
+        console.log(getData)
     }, [])
 
 

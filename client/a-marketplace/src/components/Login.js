@@ -9,27 +9,27 @@ import { useHistory, useParams} from 'react-router-dom'
 
 const Login = () => {
     const [loginData, setloginData] = useState ({
-        name: "",
+        username: "",
         password: ""
     })
     //const { id } = useParams(); fro selecting specific list items
     const { push } = useHistory();
 
     const schema = yup.object().shape({
-        name: yup.string().required().min(2),
+        username: yup.string().required().min(2),
         password: yup.string().required().min(1)
     })
     const login = () => {
-        schema.validate(loginData).then( () => {
+        schema.validate(loginData)
             axiosWithAuth()
-                .post('/api/auth/login', loginData)
+                .post('/auth/login', loginData)
                 .then(res => {
-                    localStorage.setItem("token", res.data.payload);
-                    console.log(res)
+                   localStorage.setItem("token", res.data);
+                    console.log("what is the response here? ",res)
                     push("/ListPage")
                 })
                 .catch(err => console.log(err.message))
-        })
+
     } 
     const handleChange = (e) => {
         setloginData({...loginData, [e.target.name]: e.target.value})
@@ -38,10 +38,10 @@ const Login = () => {
         <>
             <Form onSubmit={login} style={{width: '50%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white'}}>
                 <FormGroup>
-                    <legend>User Name/Email:</legend>
+                    <legend>UserName:</legend>
                     <Input 
                     type='username' 
-                    name='name' 
+                        name='username' 
                     style={{ width: '50%', margin: '0 auto' }}
                     onChange={handleChange}
                     ></Input>
@@ -54,6 +54,7 @@ const Login = () => {
                     style={{width:'50%', margin:'0 auto'}}
                     onChange={handleChange}
                     ></Input>
+                    <legend>Test Credentials = un: testmin pw: testmin1234</legend>
                 </FormGroup>
 
                 <Link to = '/SignUp'>
@@ -62,6 +63,8 @@ const Login = () => {
             </Link>
             <Link to='/ListPage'><Button style={{margin:'10px', backgroundColor:'#e74c3d'}}> Login</Button></Link>
             </Form>
+            
+
         </>
     )
 }
