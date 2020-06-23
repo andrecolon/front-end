@@ -49,6 +49,47 @@ const AddItems = () => {
        </FormGroup>
 
        <FormGroup>
+           <legend>Location</legend>
+           <Dropdown isOpen = {dropdownOpen} toggle = {toggle}>
+               <DropdownToggle caret>
+                   {FormData.value === '' ? 'location': itemData.value}
+               </DropdownToggle>
+            <DropdownMenu>
+                <div onClick = {() => {
+                    toggle();
+                    setItemData({...itemData, value:"Uganda"})
+                }}>Uganda</div>
+
+                <div onClick = {() => {
+                    toggle();
+                    setItemData({...itemData, value:"Kenya"})
+                }}>Kenya</div>
+
+                <div onClick = {() => {
+                    toggle();
+                    setItemData({...itemData, value: "Tanzania"})
+                }}>Tanzania</div>
+
+                <div onClick = {() => {
+                    toggle();
+                    setItemData({...itemData, value: "Rwanda"})
+                }}>Rwanda</div>
+
+                <div onClick = {() => {
+                    toggle();
+                    setItemData({...itemData, value: "Burundi"})
+                }}>Burundi</div>
+
+                <div onClick = {() => {
+                    toggle();
+                    setItemData({...itemData, value: "South-Sudan"})
+                }}>South Sudan</div>
+
+            </DropdownMenu>
+           </Dropdown>
+       </FormGroup>
+
+       <FormGroup>
            <legend>Item Description</legend>
            <Input type = 'textarea' name = 'itemDes' value = {itemData.itemDes} onChange = {handleChange}/>
        </FormGroup>
