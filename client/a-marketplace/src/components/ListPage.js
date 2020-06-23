@@ -1,23 +1,39 @@
 
 import React, {useState, useEffect} from 'react';
 import { Jumbotron, Container, Card, CardHeader, CardImg, CardTitle, CardText, Button, Navbar, NavbarBrand, NavItem, NavLink, NavbarText} from 'reactstrap';
+import axiosWithAuth from '../components/utils/axiosWithAuth'
 import img1 from '../assets/img1.jpg';
 import img2 from '../assets/img2.png';
+import axios from 'axios'
+
+
 // const [state, setState] = useState('[]');
 const ListPage = () => {
+
+const [ services, setServices] = useState('')
+
+    useEffect(() => {
+        const getData = () => {
+            axiosWithAuth()
+                .get(`/api/business`) 
+                .then(res => {
+                    console.log(res.data);
+                    setServices(res.data)
+                })
+                .catch(err =>
+                    console.error("What's my error? ", err.message, err.res)
+                );
+        }
+        getData()//useEffect is crying for a dependancy value ..oh yeah?!
+        // eslint-disable-next-line
+    }, [])
+
+
     return(
-        <div style={{backgroundColor:'#e74c3d'}}>
-            {/* <Navbar>
-                <NavbarBrand><Link to='/'>AFRICAN MARKET PLACE</Link></NavbarBrand>
-            <Nav>
-                <NavItem>
-                    <Link to='/listpage'>List Page</Link>
-                </NavItem>
-            </Nav>
-            </Navbar> */}
+        <div>
             <Jumbotron fluid style={{backgroundColor:'#303030'}}>
                 <Container>
-                    <h1 className='display-3' style={{color:'#fff'}}><span style={{fontFamily:'Monoton', color:'#e74c3d'}}>African</span> MARKETPLACE</h1>
+                    <h1><span>African</span> MARKETPLACE</h1>
                 </Container>
             </Jumbotron>
          
@@ -30,7 +46,7 @@ const ListPage = () => {
                     <hr/>
                 
             </div>
-            <br/>
+            {/* <br/>
             <Card></Card>
             <Card body outline color='danger' style={{width: '25%', margin:'0 auto', marginTop:'10px', color:'white', backgroundColor:'#303030'}}>
                 <CardHeader ><h2 style={{fontFamily:'Monoton', color:'lightgreen'}}>Product</h2></CardHeader>
@@ -49,12 +65,8 @@ const ListPage = () => {
                 <CardImg src={img1} alt='Africa'/>
                 <CardText>Description of Product will go here and we will ramble on and on to get the real effect for this area</CardText>
                 <Button style={{width: '25%', margin:'0 auto', backgroundColor:'#ffd50b', color:'#303030'}}>Buy</Button>
-            </Card>
-           
-            {/* <Switch>
-                <Route path='/listpage'>ListPage</Route>
-                <Route path='/'>Home</Route>
-            </Switch> */}
+            </Card> */}
+
         </div>
 
     )
