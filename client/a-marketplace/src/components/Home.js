@@ -4,9 +4,9 @@ import { Jumbotron, Container, Card, CardHeader, CardImg, CardTitle, CardText, B
 import img1 from '../assets/img1.jpg';
 import img2 from '../assets/img2.png';
 import { Route, Link } from 'react-router-dom'
-// const [state, setState] = useState('[]');
+
 const ListPage = () => {
-    // const [name, price, location, description] = props
+    
     
     return(
         <div style={{backgroundColor:'#e74c3d'}}>
