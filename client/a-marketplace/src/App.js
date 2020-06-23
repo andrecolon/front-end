@@ -5,7 +5,7 @@ import Login from './components/Login' ;
 import SignUp from './components/SignUp';
 import AddItems from './components/AddItems';
 import ListPage from './components/ListPage';
-
+import Home from './components/Home'
 const App = () => {
   return (
     <>
@@ -13,7 +13,8 @@ const App = () => {
             <NavbarBrand><Link to='/'>AFRICAN MARKET PLACE</Link></NavbarBrand>
             <Nav>
                 <NavItem>
-                    <Link to='/'>Home</Link>
+                    <Link style = {{padding: '10px'}} to='/'>Home</Link>
+                    <Link to = '/login'>Login</Link>
                 </NavItem>
             </Nav>
       </Navbar>
@@ -21,7 +22,11 @@ const App = () => {
     </Route>
      
      <Route exact path = '/'>
-      <Login />
+      <Home/>
+     </Route>
+     
+     <Route exact path = '/login'>
+       <Login/>
      </Route>
 
       <Route exact path ='/SignUp'>

@@ -67,15 +67,15 @@ const SignUp = () => {
                 <legend>Confirm Password</legend>
                 <Input type = 'password' name = 'password' value = {formData.password} onChange = {handleChange}/> 
             </FormGroup>
-            
+
+            <Link to = '/login'>
             <Button>Submit</Button>
+            </Link>
 
             <p className="forgot-password text-right">
-                    Already registered <Link to = '/' >sign in?</Link>
+                    Already registered <Link to = '/login' >sign in?</Link>
              </p>
-            <Link to = '/AddItems'>
-             <Button>Add Items</Button>
-             </Link>
+           
             
         </Form>
         </>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, CardImg, Form, FormGroup, Input, Dropdown, DropdownToggle, DropdownMenu, Lable, Button} from 'reactstrap'
 import axios from 'axios'
 import * as yup from 'yup'
+import {Link, Route} from 'react-router-dom';
 
 const AddItems = () => {
     const [dropdownOpen, setdropdownOpen] = useState (false)
@@ -96,7 +97,10 @@ const AddItems = () => {
 
        
 
-       <Button>Submit</Button>
+       <Link to = '/ListPage'>
+            <Button>Submit</Button>
+        </Link>
+
         </Form>
         
 
