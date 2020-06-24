@@ -14,9 +14,9 @@ function ItemsList(props) {
         return (
           <Link to={`/shop/${itm.id}`}>
            
-            <div className="item-card" key={itm.id}>
+            <div  className="item-card" key={itm.id} style= {{padding:'25px'}}  >
 
-              <p>{itm.item}</p>
+              <p >{itm.item}</p>
               <p>{itm.description}</p>
               <p>{itm.location}</p>
               <p>${itm.price}</p>
