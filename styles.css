@@ -1,19 +1,11 @@
 
 html {
-    background-color: darkslategrey;
-
+    box-sizing: border-box;
+    background-image: linear-gradient( rgb(48,48,48), grey);
 }
 .content {
     max-width: fit-content;
 }
-
-.img {
-    /* width: 100%;
-    z-index: 0;
-    align-items: center; */
-
-    
-} 
 
 
 .top {
@@ -24,7 +16,7 @@ html {
 
 a {
     color: #2da1c1;
-    font-size: small;
+    font-size: large;
     text-decoration: none;
     left: 252px;
     float: left;
@@ -33,8 +25,9 @@ a {
 
 
 .section3 {
-    background: lightcoral;
+    background: rgb(233,76,60);
     padding: 2rem 1rem;
+    text-align: center;
   }
   
   .inside {
@@ -45,6 +38,7 @@ a {
   .section4 {
     background: white;
     padding: 2rem 1rem;
+    text-align: center;
   }
   
   .inside {
@@ -54,8 +48,9 @@ a {
 
 
   .section5 {
-    background: lightcoral;
+    background: rgb(233,76,60);
     padding: 2rem 1rem;
+    text-align: center;
   }
   
   .inside {
@@ -66,6 +61,7 @@ a {
   .section6 {
     background: lightblue;
     padding: 2rem 1rem;
+    text-align: center;
   }
   
   .inside {
@@ -92,7 +88,7 @@ a {
   }
 
   .section7 {
-    background: lightcoral;
+    background: rgb(233,76,60);
     padding: 2rem 1rem;
   }
   
@@ -110,3 +106,318 @@ a {
     max-width: var(--contentWidth);
     margin: 0 auto;
   }
+
+
+.approach {
+  padding: 50px;
+      text-align: center;
+      background-color: rgb(48,48,48);
+      padding-top: 100px;
+}
+
+.about {
+  display: flex;
+  text-align: center;
+  
+}
+
+iframe {
+  float: right; 
+  margin: auto; 
+  display: flex; 
+  width: 150%;
+  height:300px;
+  padding-top: 0;
+}
+
+.mission {
+      padding: 50px;
+      text-align: center;
+      background-color: rgb(233,76,60);
+}
+
+
+
+
+  body {
+      font-family: 'Courier New', Courier, monospace;
+      margin: 0;
+  }
+
+  *, *:before, *:after {
+      box-sizing: inherit;
+  }
+
+  .column {
+      float: left;
+      width: 33.3%;
+      margin-bottom: 16px;
+      padding: 0 8px;
+  }
+
+  .card {
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      margin: 8px
+  }
+
+  .about {
+      padding: 50px;
+      text-align: center;
+      background-color: floralwhite;
+  }
+
+  .container {
+      padding: 0 16px;
+  }
+
+  .container::after, .row::after {
+      content: "";
+      clear: both;
+    display: table;    
+}
+
+.team {
+      padding: 50px;
+      text-align: center;
+}
+
+.solution {
+      padding: 50px;
+      width: auto;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.2);
+}
+
+.solution .solutionButton {                       /* I had to put the solution buttons (buttonS) in a different section in order to flex each box */
+  display: flex;
+  align-items: center;
+}
+
+.ourA {
+  margin-top: 50px;
+  padding: 50px;
+  text-align: center;
+  background-color: rgb(243,243,243);
+}
+
+.plan {
+  padding: 50px;
+  text-align: center;
+  background-color: rgb(233,76,60);
+}
+
+
+
+.title {
+    color: lightcyan
+}
+
+.button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: lavender;
+    background-color: burlywood;
+    text-align: center;
+    cursor: nwse-resize;
+    width: 100%;
+}
+
+.button:hover {
+    background-color: lightpink;
+}
+
+.buttonS {
+    text-align: center;
+    align-items: center;
+    margin: 10px;
+    padding: 20px;
+    background-color: rgb(254,108,96);
+    color: rgb(255,255,255);
+    position: center;
+    display: inline-block;
+    margin-left: 100px;
+}
+.buttonS:hover {
+  background-color: lightcoral;
+}
+
+img {
+    width: 100%;
+    z-index: 0;
+    align-items: center;
+} 
+
+
+
+
+
+
+@media screen and (max-width: 500px) {
+    .column {
+        width: 100%;
+        display: block;
+    }
+}
+
+@media screen and (max-width: 500px) {
+  .solution .solutionButton {
+      width: 100%;
+      flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  img .middle:hover{
+      width: 100px;
+      flex-direction: column;
+  }
+}
+
+/* .middle {
+  opacity: 0;
+} */
+
+.middle:hover {
+  opacity: 100;
+}
+
+.middleT {
+  opacity: 0;
+  font-size: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /*transform: translate(-50%, -50%);*/
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: help;
+}
+
+.middleT:hover {
+  opacity: 100;
+}
+
+.middleT1 {
+  opacity: 0;
+  font-size: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: absolute;
+  top: 50%;
+  right: 50%;
+  /*transform: translate(-50%, -50%);*/
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: help;
+}
+
+.middleT1:hover {
+  opacity: 100;
+}
+
+.middleT2 {
+  opacity: 0;
+  font-size: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: absolute;
+  top: 100%;
+  right: 50%;
+  /*transform: translate(-50%, -50%);*/
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: help;
+}
+
+.middleT2:hover {
+  opacity: 100;
+}
+
+.middleT3  {
+  opacity: 0;
+  font-size: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: absolute;
+  top: 150%;
+  right: 20%;
+  /*transform: translate(-50%, -50%);*/
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: help;
+}
+
+.middleT3:hover {
+  opacity: 100;
+}
+
+.middleT4  {
+  opacity: 0;
+  font-size: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: absolute;
+  top: 190%;
+  left: 50%;
+  /*transform: translate(-50%, -50%);*/
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: help;
+}
+
+.middleT4:hover {
+  opacity: 100;
+}
+
+.middleT5  {
+  opacity: 0;
+  font-size: 50px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  position: absolute;
+  top: 190%;
+  left: 50%;
+  /*transform: translate(-50%, -50%);*/
+  background-color: rgba(255, 255, 255, 0.2);
+  cursor: help;
+}
+
+.middleT5:hover {
+  opacity: 100;
+}
+
+
+/* .container {
+  margin: auto;
+  padding:auto;
+  border: 10px;
+  border-style: double;
+  border-color: rgba(255, 255, 255, 0.2);
+} */
+
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.row .column {
+  opacity: 0;
+  cursor: help;
+}
+
+.row .column:hover {
+  opacity: 100;
+}
+
+.popUp2 {
+  background-image: url(https://sautiafrica.org/wp-content/uploads/2018/03/DSC07031-e1520022691246.jpg);
+  /* margin-top: 100px; */
+}
+
+.popUp {
+  background-image: url(https://sautiafrica.org/wp-content/uploads/2015/07/Market_Scene_-_Gaoua_-_Burkina_Faso-e1456164093473.jpg);
+}
+
+
+
+
