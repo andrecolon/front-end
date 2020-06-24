@@ -10,20 +10,16 @@ function ItemsList(props) {
   console.log(props);
   return (
     <div className="items-list-wrapper">
-      {props.items.map(item => {
+      {props.items.map(itm => {
         return (
-          <Link to={`/shop/${item.id}`}>
+          <Link to={`/shop/${itm.id}`}>
            
-            <div className="item-card" key={item.id}>
-              <img
-                className="item-list-image"
-                
-                src={item.imageUrl}
-                //alt={item.name}
-              />
-              <p>{item.name}</p>
-              <p>${item.price}</p>
-              <p>{item.location}</p>
+            <div className="item-card" key={itm.id}>
+
+              <p>{itm.item}</p>
+              <p>{itm.description}</p>
+              <p>{itm.location}</p>
+              <p>{itm.price}</p>
               
             </div>
           </Link>

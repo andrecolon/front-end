@@ -7,7 +7,7 @@ import AddItems from './components/AddItems';
 import ListPage from './components/ListPage';
 import ItemList from './components/ItemList';
 import data from "./components/data";
-import axiosWithAuth from 'axios';
+import axios from 'axios';
 
 
 const App = () => {
@@ -15,7 +15,7 @@ const App = () => {
   // const [ business, setBusiness] = useState('')
   //   useEffect(() => {
   //       const getData = () => {
-  //           axiosWithAuth()
+  //           axios
   //               .get(`https://amp-node-api.herokuapp.com/api/business`) 
   //               .then(res => {
   //                   console.log(res.data);
@@ -50,8 +50,7 @@ const App = () => {
 
        <Route exact path = '/'>  
        <Card>
-        <CardImg style = {{width:'80%', margin:'0 auto', height:'800px'}} src={require ('./assets/img3.jpg')}/>
-            
+        <CardImg style = {{width:'80%', margin:'0 auto', height:'800px'}} src={require ('./assets/img3.jpg')}/> 
         </Card>
         </Route>   
             </div>
