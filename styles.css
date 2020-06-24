@@ -115,19 +115,28 @@ a {
       padding-top: 100px;
 }
 
+
+.p1 {
+  vertical-align: center;
+}
+
 .about {
   display: flex;
   text-align: center;
-  
+  vertical-align: center;
+  height: fit-content;
+  height: 500px;
+  text-align: center;
+  background-color: floralwhite;
 }
 
+
 iframe {
-  float: right; 
+  /* float: right;  */
   margin: auto; 
-  display: flex; 
-  width: 150%;
-  height:300px;
-  padding-top: 0;
+  display: flexbox; 
+  width: auto; 
+  height: 500px;
 }
 
 .mission {
@@ -160,11 +169,11 @@ iframe {
       margin: 8px
   }
 
-  .about {
-      padding: 50px;
+  /* .about {
+      height: auto;
       text-align: center;
       background-color: floralwhite;
-  }
+  } */
 
   .container {
       padding: 0 16px;
@@ -191,6 +200,7 @@ iframe {
 .solution .solutionButton {                       /* I had to put the solution buttons (buttonS) in a different section in order to flex each box */
   display: flex;
   align-items: center;
+  margin-right: 150px;
 }
 
 .ourA {
@@ -263,8 +273,8 @@ img {
 
 @media screen and (max-width: 500px) {
   .solution .solutionButton {
-      width: 100%;
       flex-direction: column;
+      margin-right: 100px;
   }
 }
 
@@ -274,6 +284,42 @@ img {
       flex-direction: column;
   }
 }
+
+@media screen and (max-width: 500px) {
+  .about {
+      width: 100%;
+      flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  iframe {
+      width: 100%;
+      flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  a {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      color: rgb(233,76,60);
+      font-size: large;
+      text-decoration: none;
+      left: 252px;
+      float: left;
+      margin: 10px;
+  }
+}
+
+@media screen and (min-width: 920px) {
+  iframe {
+      width: 100%;
+      /* flex-direction: column; */
+  }
+}
+
 
 /* .middle {
   opacity: 0;
@@ -411,13 +457,15 @@ row:after {
 
 .popUp2 {
   background-image: url(https://sautiafrica.org/wp-content/uploads/2018/03/DSC07031-e1520022691246.jpg);
-  /* margin-top: 100px; */
+  background-size: cover;
 }
 
 .popUp {
   background-image: url(https://sautiafrica.org/wp-content/uploads/2015/07/Market_Scene_-_Gaoua_-_Burkina_Faso-e1456164093473.jpg);
+  background-size: cover
+
+  ;
+  
 }
-
-
 
 
