@@ -19,7 +19,7 @@ function ItemsList(props) {
               <p>{itm.item}</p>
               <p>{itm.description}</p>
               <p>{itm.location}</p>
-              <p>{itm.price}</p>
+              <p>${itm.price}</p>
               
             </div>
           </Link>
