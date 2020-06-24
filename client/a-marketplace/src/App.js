@@ -1,17 +1,34 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Navbar, NavbarBrand, NavItem, NavLink, NavbarText, Nav, Button, CardImg, Card} from 'reactstrap'
 import { Route, Link } from 'react-router-dom'
 import Login from './components/Login' ;
 import SignUp from './components/SignUp';
 import AddItems from './components/AddItems';
 import ListPage from './components/ListPage';
-// import Home from './components/Home'
-import ItemList from './components/ItemList'
+import ItemList from './components/ItemList';
 import data from "./components/data";
+import axiosWithAuth from 'axios';
 
 
 const App = () => {
   const [products, setProducts] = useState(data);
+  // const [ business, setBusiness] = useState('')
+  //   useEffect(() => {
+  //       const getData = () => {
+  //           axiosWithAuth()
+  //               .get(`https://amp-node-api.herokuapp.com/api/business`) 
+  //               .then(res => {
+  //                   console.log(res.data);
+  //                   setBusiness(res.data)
+  //               })
+  //               .catch(err =>
+  //                   console.error("What's my error? ", err.message, err.res)
+  //               );
+  //       }
+  //       getData()//useEffect is crying for a dependancy value ..oh yeah?!
+  //       // eslint-disable-next-line
+  //       console.log(getData)
+  //   }, [])
 
   return (
     <>
@@ -30,10 +47,13 @@ const App = () => {
                     <h1 className='display-3' style={{color:'#fff'}}><span style={{fontFamily:'Monoton', color:'#e74c3d'}}>African</span> MARKETPLACE</h1>
                 </Container>
             </Jumbotron>
+
+       <Route exact path = '/'>  
        <Card>
         <CardImg style = {{width:'80%', margin:'0 auto', height:'800px'}} src={require ('./assets/img3.jpg')}/>
             
         </Card>
+        </Route>   
             </div>
 
     <Route exact path = '/'>
