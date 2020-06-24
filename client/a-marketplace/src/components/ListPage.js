@@ -1,13 +1,22 @@
 
 import React, {useState, useEffect} from 'react';
-import { Jumbotron, Container, Card, CardHeader, CardImg, CardTitle, CardText, Button, Navbar, NavbarBrand, NavItem, NavLink, NavbarText} from 'reactstrap';
+import { Jumbotron, Container, Card, CardHeader, CardImg, CardTitle, Input, CardText, Button, Navbar, NavbarBrand, NavItem, NavLink, NavbarText} from 'reactstrap';
 import img1 from '../assets/img1.jpg';
 import img2 from '../assets/img2.png';
 import { Route, Link } from 'react-router-dom'
 
+
+
+
 const ListPage = (props) => {
+    console.log(props);
+
   
+    
     return(
+
+        
+
         <div style={{backgroundColor:'#e74c3d'}}>
             
             {/* <Jumbotron fluid style={{backgroundColor:'#303030'}}>
@@ -19,11 +28,24 @@ const ListPage = (props) => {
             
          
             <div className='header' style={{display:'flex'}}>
-                 <Card style={{width:'25%', marginLeft:'50px', borderRadius:'50%', backgroundColor:'#fff'}}>
-                    <CardImg src={img2} style={{borderRadius:'50%', marginTop: '100px'}}    />
+                 <Card style={{width:'25%', marginLeft:'50px', borderRadius:'50%', backgroundColor:'green'}}>
+                    {/* <CardImg src={img2} style={{borderRadius:'50%', marginTop: '100px'}}    /> */}
+
+                    
+                    <div
+                        style={{
+                        height: "100px",
+                        width: "25%",
+                        border: "1px dashed black",
+                        borderRadius:'50%',
+                        marginLeft:'100px',
+                        marginTop: "50px"}}>
+
+                    </div>
+                    <Input type="file" style = {{marginTop:"200px", margin: "15%"}}/>
                 </Card>
               
-                    <CardTitle style={{marginTop: '230px', marginLeft:'100px'}}><h1>Mosi Marjani: <br/><span style={{ fontFamily:'Monoton'}}>MOSI <br /> MEALS<br />  LLC.</span></h1></CardTitle>
+                    <CardTitle style={{marginTop: '230px', marginLeft:'100px'}}><h1>Business Owner: <br/><span style={{ fontFamily:'Monoton'}}>Business<br /> Name<br />  LLC.</span></h1></CardTitle>
                     <hr/>
             
             <Link to = '/AddItems'>
@@ -52,6 +74,10 @@ const ListPage = (props) => {
                 <Button style={{width: '25%', margin:'0 auto', backgroundColor:'#ffd50b', color:'#303030'}}>Buy</Button>
             </Card>
             */}
+
+       
+   
+
             
         </div>
 
