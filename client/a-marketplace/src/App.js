@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Navbar, NavbarBrand, NavItem, NavLink, NavbarText, Nav, Button} from 'reactstrap'
 import { Route, Link } from 'react-router-dom'
 import Login from './components/Login' ;
@@ -6,7 +6,13 @@ import SignUp from './components/SignUp';
 import AddItems from './components/AddItems';
 import ListPage from './components/ListPage';
 import Home from './components/Home'
+import ItemList from './components/ItemList'
+import data from "./components/data";
+import Items from "./components/Items"
+
 const App = () => {
+  const [products, setProducts] = useState(data);
+
   return (
     <>
         <Navbar>
@@ -33,9 +39,14 @@ const App = () => {
         <SignUp/>  
       </Route>  
 
-      <Route path = '/AddItems'>
+      <Route exact path = '/AddItems'>
        <AddItems/>
        </Route>
+
+       <Route exact path ='/'>
+         <ItemList items={products} />
+       </Route>
+
 
       {/* the ListPage component will have a Header component within ListPage.js */}
       <Route exact path = '/ListPage'>

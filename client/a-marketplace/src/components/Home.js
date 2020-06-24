@@ -5,7 +5,7 @@ import img1 from '../assets/img1.jpg';
 import img2 from '../assets/img2.png';
 import { Route, Link } from 'react-router-dom'
 
-const ListPage = () => {
+const ListPage = (props) => {
     
     
     return(
@@ -16,6 +16,7 @@ const ListPage = () => {
                 </Container>
             </Jumbotron>
             </div>
+
 
 )
 }
