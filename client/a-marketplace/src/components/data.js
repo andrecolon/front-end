@@ -1,6 +1,6 @@
 export default [
     {
-      name: "Kenya Apparel",
+      name: "Kenya Products",
       id: 0,
       price: 29.95,
       imageUrl:

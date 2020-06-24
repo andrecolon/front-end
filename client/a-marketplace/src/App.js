@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { Navbar, NavbarBrand, NavItem, NavLink, NavbarText, Nav, Button} from 'reactstrap'
+import { Jumbotron, Container, Navbar, NavbarBrand, NavItem, NavLink, NavbarText, Nav, Button} from 'reactstrap'
 import { Route, Link } from 'react-router-dom'
 import Login from './components/Login' ;
 import SignUp from './components/SignUp';
 import AddItems from './components/AddItems';
 import ListPage from './components/ListPage';
-import Home from './components/Home'
+// import Home from './components/Home'
 import ItemList from './components/ItemList'
 import data from "./components/data";
-import Items from "./components/Items"
+
 
 const App = () => {
   const [products, setProducts] = useState(data);
@@ -24,12 +24,20 @@ const App = () => {
                 </NavItem>
             </Nav>
       </Navbar>
+      <div style={{backgroundColor:'#e74c3d'}}>
+            <Jumbotron fluid style={{backgroundColor:'#303030'}}>
+                <Container>
+                    <h1 className='display-3' style={{color:'#fff'}}><span style={{fontFamily:'Monoton', color:'#e74c3d'}}>African</span> MARKETPLACE</h1>
+                </Container>
+            </Jumbotron>
+            </div>
+
     <Route exact path = '/'>
     </Route>
      
-     <Route exact path = '/'>
+     {/* <Route exact path = '/'>
       <Home/>
-     </Route>
+     </Route> */}
      
      <Route exact path = '/login'>
        <Login/>
