@@ -25,14 +25,14 @@ const Login = () => {
     }
     return(
         <>
-            <Form  style={{width: '50%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white'}}>
+            <Form  style={{width: '60%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white', padding:'25px'}}>
                 <FormGroup>
                     <legend>User Name/Email:</legend>
-                    <Input type='username' name='name' style={{width:'50%', margin:'0 auto'}}></Input>
+                    <Input type='username' name='name' style={{width:'70%', margin:'0 auto'}}></Input>
                 </FormGroup>
                 <FormGroup>
                     <legend>Password:</legend>
-                    <Input type='password' name='password' style={{width:'50%', margin:'0 auto'}}></Input>
+                    <Input type='password' name='password' style={{width:'70%', margin:'0 auto'}}></Input>
                 </FormGroup>
 
                 <Link to = '/SignUp'>
