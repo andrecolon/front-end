@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Jumbotron, Container, Navbar, NavbarBrand, NavItem, NavLink, NavbarText, Nav, Button} from 'reactstrap'
+import { Jumbotron, Container, Navbar, NavbarBrand, NavItem, NavLink, NavbarText, Nav, Button, CardImg, Card} from 'reactstrap'
 import { Route, Link } from 'react-router-dom'
 import Login from './components/Login' ;
 import SignUp from './components/SignUp';
@@ -30,6 +30,10 @@ const App = () => {
                     <h1 className='display-3' style={{color:'#fff'}}><span style={{fontFamily:'Monoton', color:'#e74c3d'}}>African</span> MARKETPLACE</h1>
                 </Container>
             </Jumbotron>
+       <Card>
+        <CardImg style = {{width:'80%', margin:'0 auto', height:'800px'}} src={require ('./assets/img3.jpg')}/>
+            
+        </Card>
             </div>
 
     <Route exact path = '/'>

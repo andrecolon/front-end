@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from 'styled-components';
 
-
+// const CardRow = styled.div`
+// display:flex;`;
 
 function ItemsList(props) {
   console.log(props);
@@ -19,6 +21,7 @@ function ItemsList(props) {
               />
               <p>{item.name}</p>
               <p>${item.price}</p>
+              
             </div>
           </Link>
         );
