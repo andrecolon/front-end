@@ -8,6 +8,7 @@ import ListPage from './components/ListPage';
 import ItemList from './components/ItemList';
 import data from "./components/data";
 import PrivateRoute from "./components/utils/PrivateRoute";
+import axios from 'axios'
 
 const App = (props) => {
   // const [products, setProducts] = useState();
@@ -34,7 +35,8 @@ const App = (props) => {
             <Nav>
                 <NavItem>
                     <Link style = {{padding: '10px'}} to='/'>Home</Link>
-                    <Link to='/signup'> SignUp</Link>
+                    <Link style = {{padding: '10px'}} to='/signup'> SignUp</Link>
+                    <Link style = {{padding: '10px'}} to='/login'> Login </Link>
                 </NavItem>
             </Nav>
       </Navbar>
@@ -72,7 +74,7 @@ const App = (props) => {
       </Route> 
       <Switch>
         <PrivateRoute exact path="/add" component={AddItems} />
-        <Route exact path="/" render={(props) => <Login {...props} />} />
+        <Route exact path="/login" render={(props) => <Login {...props} />} />
       </Switch>
     </Router>
   );

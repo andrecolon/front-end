@@ -31,14 +31,16 @@ const AddItems = () => {
 
     return(
         <>
-        <Card style ={{backgroundColor:'#303030', padding: '40px'}}>
-            <h2 style={{fontFamily:'Monoton', color:'#e74c3d', margin:'0 auto'}}>Add Your Item</h2>
-         </Card>
         <Form  onSubmit = {(e) => {
             e.preventDefault()
             submit()
         }}
+
         style={{width: '50%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white', padding: '25px'}}>  
+        <FormGroup>
+        <h2 style={{fontFamily:'Monoton', color:'#e74c3d', margin:'0 auto'}}>Add Your Item</h2>
+        </FormGroup>
+
         <FormGroup>
         <legend>Name of Item</legend>
             <Input type = 'name' name= 'name' value={itemData.name} onChange = {handleChange}/>
