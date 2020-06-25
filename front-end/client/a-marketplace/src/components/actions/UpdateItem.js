@@ -53,9 +53,9 @@ const UpdateForm = props => {
 
                 <input
                     type="string"
-                    name="imageUrl"
+                    name="location"
                     onChange={changeHandler}
-                    placeholder="Image"
+                    placeholder="Location"
                     value={item.imageUrl}
                 />
                 <div className="baseline" />
@@ -69,13 +69,6 @@ const UpdateForm = props => {
                 />
                 <div className="baseline" />
 
-                <input
-                    type="string"
-                    name="shipping"
-                    onChange={changeHandler}
-                    placeholder="Shipping"
-                    value={item.shipping}
-                />
                 <div className="baseline" />
 
                 <button className="md-button form-button">Update</button>

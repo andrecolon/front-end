@@ -1,16 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Card, CardImg, Form, FormGroup, Input, Dropdown, DropdownToggle, DropdownMenu, Lable, Button} from 'reactstrap'
 import axiosWithAuth from '../utils/axiosWithAuth';
 import * as yup from 'yup'
-import {Link, Route} from 'react-router-dom';
-
-const AddItems = () => {
+import {MarketContext} from '../context/MarketContext'
+const AddItems = (updateItem) => {
+    const [products, setProducts] = useContext(MarketContext);
     const [dropdownOpen, setdropdownOpen] = useState (false)
     const [itemData, setItemData] = useState ({
         name: "",
         price: 1,
-        desc: "",
-        loc: "",
+        description: "",
+        value: "",
+        location: "",
     })
 
     const schema = yup.object().shape( {
@@ -19,21 +20,23 @@ const AddItems = () => {
         itemDes: yup.string().required(),
     })
     const submit = () => {
-        schema.validate(itemData).then ( () => {
+        //e.preventDefault();
+        schema.validate(itemData)
+        .then ( () => {
             axiosWithAuth()
             .post('/market', itemData)
-            .then((res) => {
-        })
+                .then((res) => updateItem(res.data))    
     })
 }
     const handleChange = (e) => {
-        setItemData({...itemData, [e.target.name]: e.target.value})
+        setProducts({ ...itemData, [e.target.name]: e.target.value })
+        console.log(e.target.name)
     }
     const toggle = () => setdropdownOpen((prevState) => !prevState)
 
     // const addMarketItem = e => {
     //     e.preventDefault();
-    //     setItemData(prevItems => [...prevItems, { name: item, price: price, desc: desc, loc:loc }])
+    //     setItemData(prevItems => [...prevItems, { name: item, price: price, description: description, location:location }])
 
     // }
 
@@ -43,10 +46,19 @@ const AddItems = () => {
             <h2 style={{fontFamily:'Monoton', color:'#e74c3d', margin:'0 auto'}}>Add Your Item</h2>
          </Card>
         <Form  onSubmit = {(e) => {
-            e.preventDefault()
-                submit()
-        }}
-        style={{width: '50%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white', padding: '25px'}}>  
+              e.preventDefault();  
+              submit() }
+            }
+
+        style={{
+            width: '50%',
+             margin:'0 auto', 
+             border:'2px solid black', 
+             marginTop: '10px', 
+             backgroundColor:'#303030', 
+             color:'white', 
+             padding: '25px'
+             }}>  
         <FormGroup>
         <legend>Name of Item</legend>
             <Input type = 'name' name= 'name' value={itemData.item} onChange = {handleChange}/>
@@ -99,14 +111,15 @@ const AddItems = () => {
 
        <FormGroup>
            <legend>Item Description</legend>
-           <Input type = 'textarea' name = 'itemDes' value = {itemData.itemDes} onChange = {handleChange}/>
+                    <Input type='textarea' name='description' value={itemData.description} onChange={handleChange}/>
        </FormGroup>
 
-       
+    <Button>Submit</Button>
 
-       <Link to='/ListPage'>
+
+       {/* <Link to='/ListPage'>
             <Button>Submit</Button>
-        </Link>
+        </Link> */}
 
         </Form>
         
