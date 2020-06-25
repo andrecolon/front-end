@@ -5,14 +5,22 @@ import { Route, Link } from 'react-router-dom'
 import market  from "./data";
 import ItemList from './ItemList';
 import OwnersList from './OwnersList';
-
-
-
+import axiosWithAuth from './utils/axiosWithAuth'
 
 
 const ListPage = (props) => {
-    const [products, setProducts] = useState(market);
-
+    const [products, setProducts] = useState([])
+    useEffect(() => {
+        axiosWithAuth()
+            .get("market")
+            .then(response => {
+                setProducts(response.data);
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.log("Error?", error);
+            });
+    }, []);
     return(
         <div style={{backgroundColor:'#e74c3d'}}>
             <div className='header' style={{display:'flex'}}>

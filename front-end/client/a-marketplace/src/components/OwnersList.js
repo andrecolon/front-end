@@ -3,8 +3,6 @@ import axiosWithAuth from './utils/axiosWithAuth';
 import OwnerCard from './OwnerCard'
 
 
-
-
 const OwnersList = props => {
     const [owners, setOwner] = useState([])
     useEffect(() => {
