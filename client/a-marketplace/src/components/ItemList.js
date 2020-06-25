@@ -24,7 +24,7 @@ function ItemsList( props ) {
     <div className="items-list-wrapper">
         {props.items.map(item => {
             return (
-                <Link to={`/shop/${item.id}`} style ={{padding:'25px', margin: '25px', color: 'green', background:'#303030' }}>
+                <Link to={`/ListPage${item.id}`} style ={{padding:'25px', margin: '25px', color: 'green', background:'#303030' }}>
                     <div className="item-card" key={item.id}>
                         <Card style = {{padding:'25px', margin:'0 auto'}}>
                          <p>{item.name}</p>

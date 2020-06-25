@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import * as yup from 'yup';
-import axiosWithAuth from './utils/axiosWithAuth';
+import axiosWithAuth from './utils/AxiosWithAuth';
 
 
 const Login = () => {

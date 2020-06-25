@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Jumbotron, Card, CardImg, Form, FormGroup, Input, Label, Button, Dropdown, DropdownMenu } from 'reactstrap'
 import { Route, Link } from 'react-router-dom'
 import * as yup from 'yup'
-import axiosWithAuth from './utils/axiosWithAuth';
+import axiosWithAuth from './utils/AxiosWithAuth';
 import { useHistory } from "react-router-dom";
 
 const SignUp = () => {
@@ -25,16 +25,20 @@ const SignUp = () => {
     const { push } = useHistory()
 
     const submit = () => {
-        schema.validate(formData).then( () => {
+        // schema.validate(formData).then( () => {
             axiosWithAuth()
             .post('https://amp-node-api.herokuapp.com/api/auth/register', 
                 ({ username: formData.name, password: formData.password, email:formData.email, value:formData.value }))
                 .then((res) => {
                 console.log(res.data, 'This data')
                     localStorage.setItem("token", res.data.token);
-                    push("/ListPage");
+                    // push("/ListPage");
+                    setFormData = res.data
             })
-        })
+            .catch (error => {
+                console.log (error)
+            })
+        
     }
 
     const handleChange = (e) => {
@@ -73,9 +77,10 @@ const SignUp = () => {
                 <Input type = 'password' name = 'password' value = {formData.password} onChange = {handleChange}/> 
             </FormGroup>
 
-                <Link to= '/ListPage'>
             <Button>Submit</Button>
-            </Link>
+                {/* <Link to= '/ListPage'>
+            <Button>Submit</Button>
+            </Link> */}
 
             <p className="forgot-password text-right">
                     Already registered <Link to = '/login' >sign in?</Link>
