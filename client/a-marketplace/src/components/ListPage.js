@@ -11,11 +11,7 @@ import { Route, Link } from 'react-router-dom'
 const ListPage = (props) => {
     console.log(props);
 
-  
-    
     return(
-
-        
 
         <div style={{backgroundColor:'#e74c3d'}}>
             

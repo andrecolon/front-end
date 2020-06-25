@@ -9,27 +9,19 @@ import ItemList from './components/ItemList';
 import data from "./components/data";
 import axios from 'axios';
 
-
-const App = () => {
-  const [products, setProducts] = useState(data);
-  // const [ business, setBusiness] = useState('')
-  //   useEffect(() => {
-  //       const getData = () => {
-  //           axios
-  //               .get(`https://amp-node-api.herokuapp.com/api/business`) 
-  //               .then(res => {
-  //                   console.log(res.data);
-  //                   setBusiness(res.data)
-  //               })
-  //               .catch(err =>
-  //                   console.error("What's my error? ", err.message, err.res)
-  //               );
-  //       }
-  //       getData()//useEffect is crying for a dependancy value ..oh yeah?!
-  //       // eslint-disable-next-line
-  //       console.log(getData)
-  //   }, [])
-
+const App = (props) => {
+  // const [products, setProducts] = useState();
+  console.log(props);
+  const [products, setProducts] = useState ([]);
+  useEffect (() => {
+    axios
+    .get('https://amp-node-api.herokuapp.com/api/market/')
+    .then (response => {
+        console.log(response.data);
+        setProducts(response.data)
+    })
+    .catch(error => console.log("Error!", error))
+}, []);
   return (
     <>
         <Navbar>
@@ -75,7 +67,7 @@ const App = () => {
        </Route>
 
        <Route exact path ='/'>
-         <ItemList items={products} />
+         <ItemList items= {products}/>
        </Route>
 
 

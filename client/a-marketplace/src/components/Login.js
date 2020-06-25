@@ -10,8 +10,8 @@ const Login = () => {
         password: ""
     })
     const schema = yup.object().shape({
-        name: yup.string().required().min(2),
-        password: yup.string().required().min(1)
+        name: yup.string().required('must provide user name').min(2),
+        password: yup.string().required('must provide password').min(1)
     })
     const login = () => {
         schema.validate(loginData).then( () => {
@@ -23,6 +23,8 @@ const Login = () => {
     const handleChange = (e) => {
         setloginData({...loginData, [e.target.name]: e. target.value})
     }
+
+    
     return(
         <>
             <Form  style={{width: '60%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white', padding:'25px'}}>
