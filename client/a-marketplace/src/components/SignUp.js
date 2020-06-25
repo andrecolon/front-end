@@ -49,17 +49,16 @@ const SignUp = () => {
 
     return (
         <>
-        <Card style = {{backgroundColor:'#303030', padding: '40px'}}>
-            <h2 style = {{ margin:'0 auto', fontFamily:'Monoton', color:'#e74c3d'}}>
-                Sign Up
-            </h2>
-            <CardImg/>
-        </Card>
         <Form  onSubmit = {(e) => {
             e.preventDefault()
             submit()
         }}
-        style = {{width: '20%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white', padding: '25px'}}>
+        style = {{width: '40%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white', padding: '25px'}}>
+            
+            <FormGroup style= {{margin:'0 auto', fontFamily:'Monoton', color:'#e74c3d'}}>
+                <legend style= {{margin:'0 auto', marginBottom: '30px', postion: 'flex'}}>Sign Up</legend>
+            </FormGroup>
+
             <FormGroup>
                 <legend>Full Name</legend>
                 <Input type = 'name' name= 'name' value = {formData.name} onChange = {handleChange}/>
@@ -77,10 +76,9 @@ const SignUp = () => {
                 <Input type = 'password' name = 'password' value = {formData.password} onChange = {handleChange}/> 
             </FormGroup>
 
+         <Link to= '/Login'>
             <Button>Submit</Button>
-                {/* <Link to= '/ListPage'>
-            <Button>Submit</Button>
-            </Link> */}
+            </Link>
 
             <p className="forgot-password text-right">
                     Already registered <Link to = '/login' >sign in?</Link>
