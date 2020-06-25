@@ -1,4 +1,5 @@
-export default [
+const market = [
+    
     {
       item: "South African Item",
       description: "fake paragraph",
@@ -65,3 +66,4 @@ export default [
     },
   ];
   
+export default market

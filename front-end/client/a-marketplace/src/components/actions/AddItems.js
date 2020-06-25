@@ -8,14 +8,14 @@ const AddItems = () => {
     const [dropdownOpen, setdropdownOpen] = useState (false)
     const [itemData, setItemData] = useState ({
         name: "",
-        price: 0,
+        price: 1,
         desc: "",
         loc: "",
     })
 
     const schema = yup.object().shape( {
         name: yup.string().required().min (2),
-        // price: yup.number().required.positvive().integer().min(1),
+        //price: yup.number().required.positvive().integer().min(1),
         itemDes: yup.string().required(),
     })
     const submit = () => {

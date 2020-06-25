@@ -18,7 +18,7 @@ const App = () => {
   return (
     <Router>
         <Navbar>
-            <NavbarBrand><Link to='/'>AFRICAN MARKET PLACE</Link></NavbarBrand>
+            <NavbarBrand><Link to='/'>AFRICAN MARKET PLACE 2</Link></NavbarBrand>
             <Nav>
                 <NavItem>
                     <Link style = {{padding: '10px'}} to='/'>Home</Link>
