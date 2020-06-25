@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 import * as yup from 'yup';
 import axiosWithAuth from './utils/AxiosWithAuth';
@@ -55,9 +55,15 @@ const Login = () => {
                  {/* <h2>Log in to add new items</h2> */}
                  <FormGroup>
                 <Input placeholder="Username: testmin" type='username' name='username' onChange={handleChange} style={{ width: '70%', margin: '0 auto' }}></Input>
+                </FormGroup>
+
+                <FormGroup>
                 <Input placeholder="Password: testmin1234" type='password' name='password' onChange={handleChange} style={{ width: '70%', margin: '0 auto' }}></Input>
                 </FormGroup>
+                
+                <Link to ='/ListPage'>
                 <Button style = {{marginLeft:'200px'}}>login</Button>
+                </Link>
             </Form>
 
 
