@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, CardImg, Form, FormGroup, Input, Dropdown, DropdownToggle, DropdownMenu, Lable, Button} from 'reactstrap'
-import axios from 'axios'
+import axiosWithAuth from '../utils/axiosWithAuth';
 import * as yup from 'yup'
 import {Link, Route} from 'react-router-dom';
 
@@ -9,8 +9,8 @@ const AddItems = () => {
     const [itemData, setItemData] = useState ({
         name: "",
         price: 0,
-        itemDes: "",
-        location: "",
+        desc: "",
+        loc: "",
     })
 
     const schema = yup.object().shape( {
@@ -20,7 +20,9 @@ const AddItems = () => {
     })
     const submit = () => {
         schema.validate(itemData).then ( () => {
-            axios.post('https://reqres.in/api/users', itemData).then((res) => {
+            axiosWithAuth()
+            .post('/market', itemData)
+            .then((res) => {
         })
     })
 }
@@ -29,6 +31,12 @@ const AddItems = () => {
     }
     const toggle = () => setdropdownOpen((prevState) => !prevState)
 
+    // const addMarketItem = e => {
+    //     e.preventDefault();
+    //     setItemData(prevItems => [...prevItems, { name: item, price: price, desc: desc, loc:loc }])
+
+    // }
+
     return(
         <>
         <Card style ={{backgroundColor:'#303030', padding: '40px'}}>
@@ -36,19 +44,18 @@ const AddItems = () => {
          </Card>
         <Form  onSubmit = {(e) => {
             e.preventDefault()
-            submit()
+                submit()
         }}
         style={{width: '50%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white', padding: '25px'}}>  
         <FormGroup>
         <legend>Name of Item</legend>
-            <Input type = 'name' name= 'name' value={itemData.name} onChange = {handleChange}/>
+            <Input type = 'name' name= 'name' value={itemData.item} onChange = {handleChange}/>
             </FormGroup> 
         
       <FormGroup>
            <legend>Price</legend>
-           <Input type = 'price' name = 'price' value = {itemData.price} onChange = {handleChange}/>
+           <Input type='price' name = 'price' value = {itemData.price} onChange = {handleChange}/>
        </FormGroup>
-
        <FormGroup>
            <legend>Location</legend>
            <Dropdown isOpen = {dropdownOpen} toggle = {toggle}>
@@ -97,7 +104,7 @@ const AddItems = () => {
 
        
 
-       <Link to = '/ListPage'>
+       <Link to='/ListPage'>
             <Button>Submit</Button>
         </Link>
 

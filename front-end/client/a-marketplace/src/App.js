@@ -3,7 +3,7 @@ import { Jumbotron, Container, Navbar, NavbarBrand, NavItem, NavLink, NavbarText
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Login from './components/Login' ;
 import SignUp from './components/SignUp';
-import AddItems from './components/AddItems';
+import AddItems from './components/actions/AddItems';
 import ListPage from './components/ListPage';
 import ItemList from './components/ItemList';
 import data from "./components/data";
