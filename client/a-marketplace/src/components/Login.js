@@ -1,46 +1,57 @@
-import React,  { useState }from 'react';
-import {Link, Route} from 'react-router-dom';
-import {Button, Form, Card, CardImg, FormGroup, Input, Label } from 'reactstrap';
-import *as yup from 'yup';
-import axios from 'axios';
+
+import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
+import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import * as yup from 'yup';
+import axiosWithAuth from './utils/axiosWithAuth';
+
 
 const Login = () => {
-    const [loginData, setloginData] = useState ({
-        name: "",
+    
+    const [loginData, setloginData] = useState({
+        username: "",
         password: ""
-    })
+    });
     const schema = yup.object().shape({
-        name: yup.string().required().min(2),
+        username: yup.string().required().min(2),
         password: yup.string().required().min(1)
-    })
-    const login = () => {
-        schema.validate(loginData).then( () => {
-            axios.post('https://amp-node-api.herokuapp.com/api/auth/login', loginData).then((res) => {
-                console.log(res.data, "This is the posted data")
+    });
+    const { push } = useHistory()
+    const api_login = (loginData) => {
+        axiosWithAuth()
+            // .post('http://amp-node-api.herokuapp.com/api/auth/login', 
+            // ({ username: loginData.username, password: loginData.password }))
+            .post('http://amp-node-api.herokuapp.com/api/auth/login', loginData)
+            .then((res) => {
+                //console.log("This is the set token", res)
+                localStorage.setItem("token", res.data.token);
+                push("/add");
             })
-        })
-    } 
-    const handleChange = (e) => {
-        setloginData({...loginData, [e.target.name]: e. target.value})
-    }
-    return(
-        <>
-            <Form  style={{width: '60%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white', padding:'25px'}}>
-                <FormGroup>
-                    <legend>User Name/Email:</legend>
-                    <Input type='username' name='name' style={{width:'70%', margin:'0 auto'}}></Input>
-                </FormGroup>
-                <FormGroup>
-                    <legend>Password:</legend>
-                    <Input type='password' name='password' style={{width:'70%', margin:'0 auto'}}></Input>
-                </FormGroup>
+            .catch(err => {
+                console.log('error!', err)
+            });
 
-                <Link to = '/SignUp'>
-            <Button style={{margin:'10px', backgroundColor:'#fff', color:'#303030'}}> SignUp </Button>
-            </Link>
-            <Link to='/ListPage'><Button style={{margin:'10px', backgroundColor:'#e74c3d'}}> Login</Button></Link>
+    };
+    const handleChange = (e) => {
+        setloginData({ ...loginData, [e.target.name]: e.target.value })
+        console.log(loginData)
+    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        api_login(loginData);
+    };
+    
+    return (
+        <>
+            <Form onSubmit={handleSubmit}>
+                <h2>Log in to add new items</h2>
+                <Input placeholder="Username: testmin" type='username' name='username' onChange={handleChange} style={{ width: '70%', margin: '0 auto' }}></Input>
+                <Input placeholder="Password: testmin1234" type='password' name='password' onChange={handleChange} style={{ width: '70%', margin: '0 auto' }}></Input>
+                <Button>login</Button>
             </Form>
+
+
         </>
     )
 }
-export default Login
+export default Login;

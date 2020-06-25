@@ -1,43 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import { Jumbotron, Container, Navbar, NavbarBrand, NavItem, NavLink, NavbarText, Nav, Button, CardImg, Card} from 'reactstrap'
-import { Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Login from './components/Login' ;
 import SignUp from './components/SignUp';
-import AddItems from './components/AddItems';
+import AddItems from './components/actions/AddItems';
 import ListPage from './components/ListPage';
 import ItemList from './components/ItemList';
 import data from "./components/data";
-import axios from 'axios';
+import PrivateRoute from "./components/utils/PrivateRoute";
+
 
 
 const App = () => {
   const [products, setProducts] = useState(data);
-  // const [ business, setBusiness] = useState('')
-  //   useEffect(() => {
-  //       const getData = () => {
-  //           axios
-  //               .get(`https://amp-node-api.herokuapp.com/api/business`) 
-  //               .then(res => {
-  //                   console.log(res.data);
-  //                   setBusiness(res.data)
-  //               })
-  //               .catch(err =>
-  //                   console.error("What's my error? ", err.message, err.res)
-  //               );
-  //       }
-  //       getData()//useEffect is crying for a dependancy value ..oh yeah?!
-  //       // eslint-disable-next-line
-  //       console.log(getData)
-  //   }, [])
+
 
   return (
-    <>
+    <Router>
         <Navbar>
-            <NavbarBrand><Link to='/'>AFRICAN MARKET PLACE</Link></NavbarBrand>
+            <NavbarBrand><Link to='/'>AFRICAN MARKET PLACE 2</Link></NavbarBrand>
             <Nav>
                 <NavItem>
                     <Link style = {{padding: '10px'}} to='/'>Home</Link>
-                    <Link to = '/login'>Login</Link>
+                    <Link to='/signup'> SignUp</Link>
                 </NavItem>
             </Nav>
       </Navbar>
@@ -58,14 +43,6 @@ const App = () => {
     <Route exact path = '/'>
     </Route>
      
-     {/* <Route exact path = '/'>
-      <Home/>
-     </Route> */}
-     
-     <Route exact path = '/login'>
-       <Login/>
-     </Route>
-
       <Route exact path ='/SignUp'>
         <SignUp/>  
       </Route>  
@@ -78,13 +55,14 @@ const App = () => {
          <ItemList items={products} />
        </Route>
 
-
-      {/* the ListPage component will have a Header component within ListPage.js */}
-      <Route exact path = '/ListPage'>
+       <Route exact path = '/ListPage'>
       <ListPage />
-      </Route>
-      
-    </>
+      </Route> 
+      <Switch>
+        <PrivateRoute exact path="/add" component={AddItems} />
+        <Route exact path="/" render={(props) => <Login {...props} />} />
+      </Switch>
+    </Router>
   );
 }
 

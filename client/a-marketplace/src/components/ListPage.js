@@ -1,37 +1,23 @@
 
 import React, {useState, useEffect} from 'react';
-import { Jumbotron, Container, Card, CardHeader, CardImg, CardTitle, Input, CardText, Button, Navbar, NavbarBrand, NavItem, NavLink, NavbarText} from 'reactstrap';
-import img1 from '../assets/img1.jpg';
-import img2 from '../assets/img2.png';
+import {CardTitle, Card, Input, Button} from 'reactstrap';
 import { Route, Link } from 'react-router-dom'
+import market  from "./data";
+import ItemList from './ItemList';
+
 
 
 
 
 const ListPage = (props) => {
-    console.log(props);
+    const [products, setProducts] = useState(market);
 
-  
-    
     return(
-
-        
-
         <div style={{backgroundColor:'#e74c3d'}}>
             
-            {/* <Jumbotron fluid style={{backgroundColor:'#303030'}}>
-                <Container>
-                    <h1 className='display-3' style={{color:'#fff'}}><span style={{fontFamily:'Monoton', color:'#e74c3d'}}>African</span> MARKETPLACE</h1>
-                </Container>
-            </Jumbotron> */}
 
-            
-         
             <div className='header' style={{display:'flex'}}>
                  <Card style={{width:'25%', marginLeft:'50px', borderRadius:'50%', backgroundColor:'green'}}>
-                    {/* <CardImg src={img2} style={{borderRadius:'50%', marginTop: '100px'}}    /> */}
-
-                    
                     <div
                         style={{
                         height: "100px",
@@ -54,26 +40,15 @@ const ListPage = (props) => {
 
             </div>
             <br/>
-            <Card></Card>
-            {/* <Card body outline color='danger' style={{width: '25%', margin:'0 auto', marginTop:'10px', color:'white', backgroundColor:'#303030'}}>
-                <CardHeader ><h2 style={{fontFamily:'Monoton', color:'lightgreen'}}>Product</h2></CardHeader>
-                <CardImg src={img1} alt='Africa'/>
-                <CardText>Description of Product will go here and we will ramble on and on to get the real effect for this area</CardText>
-                <Button style={{width: '25%', margin:'0 auto', backgroundColor:'#ffd50b', color:'#303030'}}>Buy</Button>
+            <Card>
+
+                <div className="items-list-wrapper">
+                    <ItemList items={products} />
+                    
+
+                </div>
             </Card>
-            <Card body outline color='danger' style={{width: '25%', margin:'0 auto', marginTop:'10px', color:'white', backgroundColor:'#303030'}}>
-            <CardHeader><h2 style={{fontFamily:'Monoton', color:'lightgreen'}}>Product</h2></CardHeader>
-                <CardImg src={img1} alt='Africa'/>
-                <CardText>Description of Product will go here and we will ramble on and on to get the real effect for this area</CardText>
-                <Button style={{width: '25%', margin:'0 auto', backgroundColor:'#ffd50b', color:'#303030'}}>Buy</Button>
-            </Card>
-            <Card body outline color='danger' style={{width: '25%', margin:'0 auto', marginTop:'10px', color:'white', backgroundColor:'#303030'}}>
-            <CardHeader><h2 style={{fontFamily:'Monoton', color:'lightgreen'}}>Product</h2></CardHeader>
-                <CardImg src={img1} alt='Africa'/>
-                <CardText>Description of Product will go here and we will ramble on and on to get the real effect for this area</CardText>
-                <Button style={{width: '25%', margin:'0 auto', backgroundColor:'#ffd50b', color:'#303030'}}>Buy</Button>
-            </Card>
-            */}
+
 
        
    
