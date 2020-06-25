@@ -13,19 +13,21 @@ const Login = () => {
         password: ""
     });
     const schema = yup.object().shape({
+
+
         username: yup.string().required().min(2),
         password: yup.string().required().min(1)
     });
     const { push } = useHistory()
     const api_login = (loginData) => {
         axiosWithAuth()
-            // .post('http://amp-node-api.herokuapp.com/api/auth/login', 
-            // ({ username: loginData.username, password: loginData.password }))
-            .post('http://amp-node-api.herokuapp.com/api/auth/login', loginData)
+     
+           .post('http://amp-node-api.herokuapp.com/api/auth/login', loginData)
             .then((res) => {
-                //console.log("This is the set token", res)
+                
                 localStorage.setItem("token", res.data.token);
                 push("/add");
+
             })
             .catch(err => {
                 console.log('error!', err)
@@ -33,6 +35,7 @@ const Login = () => {
 
     };
     const handleChange = (e) => {
+
         setloginData({ ...loginData, [e.target.name]: e.target.value })
         console.log(loginData)
     };
@@ -42,6 +45,7 @@ const Login = () => {
     };
     
     return (
+
         <>
             <Form onSubmit={handleSubmit}>
                 <h2>Log in to add new items</h2>

@@ -9,10 +9,22 @@ import ItemList from './components/ItemList';
 import data from "./components/data";
 import PrivateRoute from "./components/utils/PrivateRoute";
 
+const App = (props) => {
+  // const [products, setProducts] = useState();
+  console.log(props);
+  const [products, setProducts] = useState ([]);
+  useEffect (() => {
+    axios
+    .get('https://amp-node-api.herokuapp.com/api/market/')
+    .then (response => {
+        console.log(response.data);
+        setProducts(response.data)
+    })
+    .catch(error => console.log("Error!", error))
+}, []);
 
 
-const App = () => {
-  const [products, setProducts] = useState(data);
+
 
 
   return (
@@ -52,7 +64,7 @@ const App = () => {
        </Route>
 
        <Route exact path ='/'>
-         <ItemList items={products} />
+         <ItemList items= {products}/>
        </Route>
 
        <Route exact path = '/ListPage'>
