@@ -11,7 +11,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
                 if (localStorage.getItem('token')) {
                     return <Component {...props} />
                 } else {
-                    return (alert("Forbidden", setTimeout(5000)), <Redirect to="/" />)
+                    return (alert("Forbidden", setTimeout(5000)), <Redirect to="/add" />)
                 }
             }}
         />

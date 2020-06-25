@@ -5,6 +5,7 @@ import { Route, Link } from 'react-router-dom'
 import axios from 'axios'
 import * as yup from 'yup'
 import AddItems from './AddItems'
+import axiosWithAuth from './utils/axiosWithAuth';
 
 const SignUp = () => {
     // const [dropdownOpen, setdropdownOpen] = useState (false)
@@ -25,7 +26,9 @@ const SignUp = () => {
 
     const submit = () => {
         schema.validate(formData).then( () => {
-            axios.post('https://amp-node-api.herokuapp.com/api/auth/register', formData).then((res) => {
+            axiosWithAuth().post('https://amp-node-api.herokuapp.com/api/auth/register', 
+                ({ username: formData.name, password: formData.password, email:formData.email, value:formData.value }))
+                .then((res) => {
                 console.log(res.data, 'This data')
             })
         })
@@ -49,7 +52,7 @@ const SignUp = () => {
             e.preventDefault()
             submit()
         }}
-        style = {{width: '50%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white', padding: '25px'}}>
+        style = {{width: '20%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white', padding: '25px'}}>
             <FormGroup>
                 <legend>Full Name</legend>
                 <Input type = 'name' name= 'name' value = {formData.name} onChange = {handleChange}/>
