@@ -2,15 +2,16 @@
 import React, {useState, useEffect} from 'react';
 import {CardTitle, Card, Input, Button} from 'reactstrap';
 import { Route, Link } from 'react-router-dom'
-import data from "./data";
+import market  from "./data";
 import ItemList from './ItemList';
+import OwnersList from './OwnersList';
 
 
 
 
 
 const ListPage = (props) => {
-    const [products, setProducts] = useState(data);
+    const [products, setProducts] = useState(market);
 
     return(
         <div style={{backgroundColor:'#e74c3d'}}>
@@ -26,25 +27,31 @@ const ListPage = (props) => {
                         borderRadius:'50%',
                         marginLeft:'100px',
                         marginTop: "50px"}}>
-
                     </div>
                     <Input type="file" style = {{marginTop:"200px", margin: "15%"}}/>
                 </Card>
               
-                    <CardTitle style={{marginTop: '230px', marginLeft:'100px'}}><h1>Business Owner: <br/><span style={{ fontFamily:'Monoton'}}>Business<br /> Name<br />  LLC.</span></h1></CardTitle>
+                    <CardTitle style={{marginTop: '230px', marginLeft:'100px'}}><h1>Business Owner: <br/><span style={{ fontFamily:'Monoton'}}>Business<br /> Name<br />  LLC.</span></h1>
+                    <OwnersList />
+                    </CardTitle>
                     <hr/>
             
             <Link to = '/AddItems'>
              <Button>Add Items</Button>
              </Link>
-
+                
             </div>
             <br/>
-            <Card></Card>
-            <div className="items-list-wrapper">
-                        <ItemList items={products} />
+            <Card>
+
+                <div className="items-list-wrapper">
+                    <ItemList items={products} />
                     
-            </div>
+                    
+
+                </div>
+            </Card>
+
 
        
    
