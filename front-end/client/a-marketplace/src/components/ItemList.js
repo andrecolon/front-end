@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import UpdateForm from "./actions/UpdateItem";
 
 
 // const CardRow = styled.div`
@@ -11,7 +12,7 @@ function ItemsList(props) {
     <div className="items-list-wrapper">
       {props.items.map(itm => {
         return (
-          <Link to={`/shop/${itm.id}`}>
+          <Link exact to={<UpdateForm/>}>
            
             <div  className="item-card" key={itm.id} style= {{padding:'25px'}}  >
 

@@ -2,10 +2,9 @@
 import React, { useState } from 'react'
 import { Jumbotron, Card, CardImg, Form, FormGroup, Input, Label, Button, Dropdown, DropdownMenu } from 'reactstrap'
 import { Route, Link } from 'react-router-dom'
-import axios from 'axios'
 import * as yup from 'yup'
-import AddItems from './AddItems'
 import axiosWithAuth from './utils/axiosWithAuth';
+import { useHistory } from "react-router-dom";
 
 const SignUp = () => {
     // const [dropdownOpen, setdropdownOpen] = useState (false)
@@ -23,13 +22,17 @@ const SignUp = () => {
         password: yup.string().required(),
         
     })
+    const { push } = useHistory()
 
     const submit = () => {
         schema.validate(formData).then( () => {
-            axiosWithAuth().post('https://amp-node-api.herokuapp.com/api/auth/register', 
+            axiosWithAuth()
+            .post('https://amp-node-api.herokuapp.com/api/auth/register', 
                 ({ username: formData.name, password: formData.password, email:formData.email, value:formData.value }))
                 .then((res) => {
                 console.log(res.data, 'This data')
+                    localStorage.setItem("token", res.data.token);
+                    push("/ListPage");
             })
         })
     }
@@ -70,7 +73,7 @@ const SignUp = () => {
                 <Input type = 'password' name = 'password' value = {formData.password} onChange = {handleChange}/> 
             </FormGroup>
 
-            <Link to = '/login'>
+                <Link to= '/ListPage'>
             <Button>Submit</Button>
             </Link>
 
