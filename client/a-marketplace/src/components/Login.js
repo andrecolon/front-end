@@ -26,7 +26,7 @@ const Login = () => {
             .then((res) => {
                 
                 localStorage.setItem("token", res.data.token);
-                push("/add");
+                push("/ListPage");
 
             })
             .catch(err => {
@@ -61,9 +61,10 @@ const Login = () => {
                 <Input placeholder="Password: testmin1234" type='password' name='password' onChange={handleChange} style={{ width: '70%', margin: '0 auto' }}></Input>
                 </FormGroup>
                 
-                <Link to ='/ListPage'>
                 <Button style = {{marginLeft:'200px'}}>login</Button>
-                </Link>
+                {/* <Link to ='/ListPage'>
+                
+                </Link> */}
             </Form>
 
 

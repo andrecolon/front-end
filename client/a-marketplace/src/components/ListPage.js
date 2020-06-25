@@ -4,13 +4,24 @@ import {CardTitle, Card, Input, Button} from 'reactstrap';
 import { Route, Link } from 'react-router-dom'
 import market  from "./data";
 import ItemList from './ItemList';
+import OwnersList from './OwnersList'
+import axiosWithAuth from './utils/AxiosWithAuth'
+import axios from 'axios'
 
 
-
-
-
-const ListPage = (props) => {
-    const [products, setProducts] = useState(market);
+const ListPage = () => {
+   
+    const [products, setProducts] = useState ([]);
+    useEffect (() => {
+      axios
+      .get('https://amp-node-api.herokuapp.com/api/market/')
+      .then (response => {
+          console.log(response.data);
+          setProducts(response.data)
+      })
+      .catch(error => console.log("Error!", error))
+  }, []);
+  
 
     return(
 
@@ -32,9 +43,10 @@ const ListPage = (props) => {
                     <Input type="file" style = {{marginTop:"200px", margin: "15%"}}/>
                 </Card>
               
-                    <CardTitle style={{marginTop: '230px', marginLeft:'100px'}}><h1>Business Owner: <br/><span style={{ fontFamily:'Monoton'}}>Business<br /> Name<br />  LLC.</span></h1></CardTitle>
+                    {/* <CardTitle style={{marginTop: '230px', marginLeft:'100px'}}><h1>Business Owner: <br/><span style={{ fontFamily:'Monoton'}}>Business<br /> Name<br />  LLC.</span></h1></CardTitle> */}
                     <hr/>
-            
+                    <OwnersList />
+
             <Link to = '/AddItems'>
              <Button>Add Items</Button>
              </Link>
@@ -49,11 +61,6 @@ const ListPage = (props) => {
 
                 </div>
             </Card>
-
-
-       
-   
-
             
         </div>
 
