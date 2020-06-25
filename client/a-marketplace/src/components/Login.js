@@ -1,71 +1,57 @@
-import React, { useState}from 'react';
-import {Link, Route} from 'react-router-dom';
-import {Button, Form, Card, CardImg, FormGroup, Input, Label } from 'reactstrap';
-import *as yup from 'yup';
-import axiosWithAuth from '../components/utils/axiosWithAuth';
-import { useHistory, useParams} from 'react-router-dom'
 
+import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
+import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import * as yup from 'yup';
+import axiosWithAuth from './utils/axiosWithAuth';
 
 
 const Login = () => {
-    const [loginData, setloginData] = useState ({
+    
+    const [loginData, setloginData] = useState({
         username: "",
         password: ""
-    })
-    //const { id } = useParams(); fro selecting specific list items
-    const { push } = useHistory();
-
+    });
     const schema = yup.object().shape({
         username: yup.string().required().min(2),
         password: yup.string().required().min(1)
-    })
-    const login = () => {
-        schema.validate(loginData)
-            axiosWithAuth()
-                .post('/auth/login', loginData)
-                .then(res => {
-                   localStorage.setItem("token", res.data);
-                    console.log("what is the response here? ",res)
-                    push("/ListPage")
-                })
-                .catch(err => console.log(err.message))
+    });
+    const { push } = useHistory()
+    const api_login = (loginData) => {
+        axiosWithAuth()
+            // .post('http://amp-node-api.herokuapp.com/api/auth/login', 
+            // ({ username: loginData.username, password: loginData.password }))
+            .post('http://amp-node-api.herokuapp.com/api/auth/login', loginData)
+            .then((res) => {
+                //console.log("This is the set token", res)
+                localStorage.setItem("token", res.data.token);
+                push("/add");
+            })
+            .catch(err => {
+                console.log('error!', err)
+            });
 
-    } 
+    };
     const handleChange = (e) => {
-        setloginData({...loginData, [e.target.name]: e.target.value})
-    }
-    return(
+        setloginData({ ...loginData, [e.target.name]: e.target.value })
+        console.log(loginData)
+    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        api_login(loginData);
+    };
+    
+    return (
         <>
-            <Form onSubmit={login} style={{width: '50%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white'}}>
-                <FormGroup>
-                    <legend>UserName:</legend>
-                    <Input 
-                    type='username' 
-                        name='username' 
-                    style={{ width: '50%', margin: '0 auto' }}
-                    onChange={handleChange}
-                    ></Input>
-                </FormGroup>
-                <FormGroup>
-                    <legend>Password:</legend>
-                    <Input 
-                    type='password' 
-                    name='password' 
-                    style={{width:'50%', margin:'0 auto'}}
-                    onChange={handleChange}
-                    ></Input>
-                    <legend>Test Credentials = un: testmin pw: testmin1234</legend>
-                </FormGroup>
-
-                <Link to = '/SignUp'>
-            <Button 
-            tyle={{margin:'10px', backgroundColor:'#fff', color:'#303030'}}> SignUp </Button>
-            </Link>
-            <Link to='/ListPage'><Button style={{margin:'10px', backgroundColor:'#e74c3d'}}> Login</Button></Link>
+            <Form onSubmit={handleSubmit}>
+                <h2>Log in to add new items</h2>
+                <Input placeholder="Username: testmin" type='username' name='username' onChange={handleChange} style={{ width: '70%', margin: '0 auto' }}></Input>
+                <Input placeholder="Password: testmin1234" type='password' name='password' onChange={handleChange} style={{ width: '70%', margin: '0 auto' }}></Input>
+                <Button>login</Button>
             </Form>
-            
+
 
         </>
     )
 }
-export default Login
+export default Login;

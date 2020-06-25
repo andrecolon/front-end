@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Card, Form, FormGroup, Input, Dropdown, DropdownToggle, DropdownMenu, Lable, Button} from 'reactstrap'
 import axios from 'axios'
 import * as yup from 'yup'
+import {Link, Route} from 'react-router-dom';
 
 const AddItems = () => {
     const [dropdownOpen, setdropdownOpen] = useState (false)
@@ -49,13 +50,57 @@ const AddItems = () => {
        </FormGroup>
 
        <FormGroup>
+           <legend>Location</legend>
+           <Dropdown isOpen = {dropdownOpen} toggle = {toggle}>
+               <DropdownToggle caret>
+                   {FormData.value === '' ? 'location': itemData.value}
+               </DropdownToggle>
+            <DropdownMenu>
+                <div onClick = {() => {
+                    toggle();
+                    setItemData({...itemData, value:"Uganda"})
+                }}>Uganda</div>
+
+                <div onClick = {() => {
+                    toggle();
+                    setItemData({...itemData, value:"Kenya"})
+                }}>Kenya</div>
+
+                <div onClick = {() => {
+                    toggle();
+                    setItemData({...itemData, value: "Tanzania"})
+                }}>Tanzania</div>
+
+                <div onClick = {() => {
+                    toggle();
+                    setItemData({...itemData, value: "Rwanda"})
+                }}>Rwanda</div>
+
+                <div onClick = {() => {
+                    toggle();
+                    setItemData({...itemData, value: "Burundi"})
+                }}>Burundi</div>
+
+                <div onClick = {() => {
+                    toggle();
+                    setItemData({...itemData, value: "South-Sudan"})
+                }}>South Sudan</div>
+
+            </DropdownMenu>
+           </Dropdown>
+       </FormGroup>
+
+       <FormGroup>
            <legend>Item Description</legend>
            <Input type = 'textarea' name = 'itemDes' value = {itemData.itemDes} onChange = {handleChange}/>
        </FormGroup>
 
        
 
-       <Button>Submit</Button>
+       <Link to = '/ListPage'>
+            <Button>Submit</Button>
+        </Link>
+
         </Form>
         
 

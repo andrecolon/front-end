@@ -1,82 +1,47 @@
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Jumbotron, Card, CardImg, Form, FormGroup, Input, Label, Button, Dropdown, DropdownMenu } from 'reactstrap'
 import { Route, Link } from 'react-router-dom'
-import axiosWithAuth from './utils/axiosWithAuth'
 import * as yup from 'yup'
+import axiosWithAuth from './utils/axiosWithAuth';
+import { useHistory } from "react-router-dom";
 
 const SignUp = () => {
-    const [post, setPost] = useState([]);
-    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-    const [formState, setFormState] = useState({
+    // const [dropdownOpen, setdropdownOpen] = useState (false)
+    const [formData, setFormData] = useState ({
         name: "",
         email: "",
+        value:"",
         password: ""
-    });
-    const [errors, setErrors] = useState({
-        name: "",
-        email: "",
-        password: ""
+    })
+    
+    const schema = yup.object().shape({
+        name: yup.string().required().min(2),
+        email: yup.string().required().min(1),
+        value: yup.string().required(),
+        password: yup.string().required(),
+        
+    })
+    const { push } = useHistory()
 
-    });
-
-    const formSchema = yup.object().shape({
-        name: yup
-            .string()
-            .min(5)
-            .required(`Name is a required field `),
-        email: yup
-            .string()
-            .required("Please enter a valid email address")
-            .email("Please enter a valid email address"),
-        password: yup.string()
-    });
-
-    const validateChange = e => {
-        yup
-            .reach(formSchema, e.target.name)
-            .validate(e.target.value)
-            .then(valid => {
-                setErrors({ ...errors, [e.target.name]: "" });
+    const submit = () => {
+        schema.validate(formData).then( () => {
+            axiosWithAuth()
+            .post('https://amp-node-api.herokuapp.com/api/auth/register', 
+                ({ username: formData.name, password: formData.password, email:formData.email, value:formData.value }))
+                .then((res) => {
+                console.log(res.data, 'This data')
+                    localStorage.setItem("token", res.data.token);
+                    push("/ListPage");
             })
-            .catch(err => setErrors({ ...errors, [e.target.name]: err.errors[0] }));
-    };
+        })
+    }
 
-    useEffect(() => {
-        formSchema.isValid(formState).then(valid => {
-            console.log("valid?", valid);
-            setIsButtonDisabled(!valid);
-        });
-    }, [formState]);
+    const handleChange = (e) => {
+        setFormData({...formData, [e.target.name]: e.target.value})
+    }
 
-    const formSubmit = e => {
-        e.preventDefault();
-        axiosWithAuth()
-            .post("/auth/register", formState)
-            .then(response => {
-                setPost(response.data);
-                setFormState({
-                    name: "",
-                    email: "",
-                    password: "",
-                });
-            })
-            .catch(err => console.error(console.error,
-                err.response));
-    };
-
-    // onChange function
-    const handleChange = e => {
-        console.log("input changed!", e.target.value);
-        e.persist();
-        const newFormData = {
-            ...formState,
-            [e.target.name]:
-                e.target.type === "checkbox" ? e.target.checked : e.target.value
-        };
-        validateChange(e);
-        setFormState(newFormData);
-    };
+    // const toggle = () => setdropdownOpen ((prevState ) => !prevState)
 
     return (
         <>
@@ -86,45 +51,38 @@ const SignUp = () => {
             </h2>
             <CardImg/>
         </Card>
-        <Form onSubmit={formSubmit}
-        style = {{width: '50%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white', padding: '25px'}}>
+        <Form  onSubmit = {(e) => {
+            e.preventDefault()
+            submit()
+        }}
+        style = {{width: '20%', margin:'0 auto', border:'2px solid black', marginTop: '10px', backgroundColor:'#303030', color:'white', padding: '25px'}}>
             <FormGroup>
                 <legend>Full Name</legend>
-                <Input 
-                type='name' 
-                name='name' 
-                value={formState.name} 
-                onChange = {handleChange}
-                />
+                <Input type = 'name' name= 'name' value = {formData.name} onChange = {handleChange}/>
             </FormGroup>
             <FormGroup>
                 <legend>Email</legend>
-                <Input 
-                type='email' 
-                name='email'
-                        value={formState.email} 
-                onChange={handleChange}
-                />
+                <Input type = 'email' name ='email' value = {formData.email} onChange= {handleChange}/>
             </FormGroup>
             <FormGroup>
                 <legend>Password</legend>
-                <Input 
-                type='password' 
-                name='password' 
-                        value={formState.password} 
-                onChange={handleChange}
-                /> 
-            </FormGroup>            
-                <button type="submit" disabled={isButtonDisabled}>
-                     Submit
-                     </button>
+                <Input type = 'password' name = 'password' value = {formData.password} onChange = {handleChange}/> 
+            </FormGroup>
+            <FormGroup>
+                <legend>Confirm Password</legend>
+                <Input type = 'password' name = 'password' value = {formData.password} onChange = {handleChange}/> 
+            </FormGroup>
 
-                <pre>{JSON.stringify(post, null, 2)}</pre>
+                <Link to= '/ListPage'>
+            <Button>Submit</Button>
+            </Link>
 
-        </Form>
             <p className="forgot-password text-right">
-                Already registered <Link to='/' >sign in?</Link>
-            </p>
+                    Already registered <Link to = '/login' >sign in?</Link>
+             </p>
+           
+            
+        </Form>
         </>
     )
 }
