@@ -15,8 +15,6 @@ const ListPage = (props) => {
 
     return(
         <div style={{backgroundColor:'#e74c3d'}}>
-            
-
             <div className='header' style={{display:'flex'}}>
                  <Card style={{width:'25%', marginLeft:'50px', borderRadius:'50%', backgroundColor:'green'}}>
                     <div

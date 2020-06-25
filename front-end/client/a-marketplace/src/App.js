@@ -8,6 +8,7 @@ import ListPage from './components/ListPage';
 import ItemList from './components/ItemList';
 import data from "./components/data";
 import PrivateRoute from "./components/utils/PrivateRoute";
+import { MarketProvider } from './components/context/MarketContext';
 
 
 
@@ -16,6 +17,7 @@ const App = () => {
 
 
   return (
+    <MarketProvider>
     <Router>
         <Navbar>
             <NavbarBrand><Link to='/'>AFRICAN MARKET PLACE 2</Link></NavbarBrand>
@@ -50,6 +52,9 @@ const App = () => {
       <Route exact path = '/AddItems'>
        <AddItems/>
        </Route>
+      <Route exact path='/Login'>
+        <Login />
+      </Route>
 
        <Route exact path ='/'>
          <ItemList items={products} />
@@ -63,6 +68,7 @@ const App = () => {
         <Route exact path="/" render={(props) => <Login {...props} />} />
       </Switch>
     </Router>
+    </MarketProvider>
   );
 }
 

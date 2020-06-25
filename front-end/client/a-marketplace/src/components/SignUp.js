@@ -5,6 +5,7 @@ import { Route, Link } from 'react-router-dom'
 import * as yup from 'yup'
 import axiosWithAuth from './utils/axiosWithAuth';
 import { useHistory } from "react-router-dom";
+import Login from './Login'
 
 const SignUp = () => {
     // const [dropdownOpen, setdropdownOpen] = useState (false)
@@ -45,7 +46,7 @@ const SignUp = () => {
 
     return (
         <>
-        <Card style = {{backgroundColor:'#303030', padding: '40px'}}>
+        <Card style = {{backgroundColor:'#303030', padding: '10px'}}>
             <h2 style = {{ margin:'0 auto', fontFamily:'Monoton', color:'#e74c3d'}}>
                 Sign Up
             </h2>
@@ -78,8 +79,11 @@ const SignUp = () => {
             </Link>
 
             <p className="forgot-password text-right">
-                    Already registered <Link to = '/login' >sign in?</Link>
-             </p>
+                    <Link style={{ padding: '10px' }} to='/Login'>sign in?</Link>
+
+            </p>
+           
+             
            
             
         </Form>
