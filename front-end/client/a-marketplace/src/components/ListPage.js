@@ -45,6 +45,9 @@ const ListPage = (props) => {
             <Link to = '/AddItems'>
              <Button>Add Items</Button>
              </Link>
+                <Link to='/DeleteItem'>
+                    <Button>Delete Items</Button>
+                </Link>
                 
             </div>
             <br/>
