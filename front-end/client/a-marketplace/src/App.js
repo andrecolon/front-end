@@ -9,6 +9,7 @@ import ItemList from './components/ItemList';
 import data from "./components/data";
 import PrivateRoute from "./components/utils/PrivateRoute";
 import { MarketProvider } from './components/context/MarketContext';
+import DeleteItem from './components/actions/DeleteItem';
 
 
 
@@ -55,7 +56,9 @@ const App = () => {
       <Route exact path='/Login'>
         <Login />
       </Route>
-
+        <Route exact path='/DeleteItem'>
+          <DeleteItem />
+        </Route>
        <Route exact path ='/'>
          <ItemList items={products} />
        </Route>
