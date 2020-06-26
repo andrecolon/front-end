@@ -23,7 +23,7 @@ const SignUp = () => {
         
     })
     const { push } = useHistory()
-
+    const [errors, setErrors] = useState(formData);
     const submit = () => {
         // schema.validate(formData).then( () => {
             axiosWithAuth()
@@ -34,10 +34,11 @@ const SignUp = () => {
                     localStorage.setItem("token", res.data.token);
                     // push("/ListPage");
                     setFormData = res.data
-            })
-            .catch (error => {
-                console.log (error)
-            })
+                })
+            // .catch (err => {
+            //     console.log ("Error!!!", err)
+            //     setErrors({ ...errors, [res.data.token]: err.errors[0] });
+            // })
         
     }
 

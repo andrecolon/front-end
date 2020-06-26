@@ -69,11 +69,11 @@ const App = (props) => {
          <ItemList items= {products}/>
        </Route>
 
-       <Route exact path = '/ListPage'>
+       {/* <Route exact path = '/ListPage'>
       <ListPage />
-      </Route> 
+      </Route>  */}
       <Switch>
-        <PrivateRoute exact path="/add" component={AddItems} />
+        <PrivateRoute exact path="/ListPage" component={ListPage} />
         <Route exact path="/login" render={(props) => <Login {...props} />} />
       </Switch>
     </Router>
