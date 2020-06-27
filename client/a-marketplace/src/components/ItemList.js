@@ -1,46 +1,32 @@
-import React, {useState, useEffect} from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import styled from 'styled-components';
-import {Card} from 'reactstrap'
-import axios from 'axios'
+import UpdateForm from "./actions/UpdateItem";
+import { MarketContext } from './context/MarketContect'
 
 // const CardRow = styled.div`
 // display:flex;`;
 
-function ItemsList( props ) {
-  console.log(props);
-  const [products, setProducts] = useState ([]);
-  useEffect (() => {
-    axios
-    .get('https://amp-node-api.herokuapp.com/api/market/')
-    .then (response => {
-        console.log(response.data);
-        setProducts(response.data)
-    })
-    .catch(error => console.log("Error!", error))
-}, []);
+function ItemsList(props) {
+    const [products, setProducts] = useContext(MarketContext);
+    return (
+        <div className="items-list-wrapper">
+            {props.items.map(itm => {
+                return (
+                    <Link exact to={<UpdateForm />}>
 
-  return (
-    <div className="items-list-wrapper">
-        {props.items.map(item => {
-            return (
-                <Link to={`/ListPage${item.id}`} style ={{padding:'25px', margin: '25px', color: 'green', background:'#303030' }}>
-                    <div className="item-card" key={item.id}>
-                        <Card style = {{padding:'25px', margin:'0 auto'}}>
-                         <p>{item.name}</p>
-                         <p>{item.description}</p>
-                         <p>{item.location}</p>
-                         <p>${item.price}</p>
-                         </Card>
-                    </div>
-                </Link>
-            )
-        })}
+                        <div className="item-card" key={itm.id} style={{ padding: '25px' }}  >
+
+                            <p >{itm.item}</p>
+                            <p>{itm.description}</p>
+                            <p>{itm.location}</p>
+                            <p>${itm.price}</p>
+
+                        </div>
+                    </Link>
+                );
+            })}
         </div>
-          
-         
-        );
-     
-  
+    );
 }
+
 export default ItemsList;

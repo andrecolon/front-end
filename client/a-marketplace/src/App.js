@@ -6,29 +6,24 @@ import SignUp from './components/SignUp';
 import AddItems from './components/actions/AddItems';
 import ListPage from './components/ListPage';
 import ItemList from './components/ItemList';
-import data from "./components/data";
 import PrivateRoute from "./components/utils/PrivateRoute";
+import { MarketProvider, MarketContext } from './components/context/MarketContect';
+
 import axios from 'axios'
 
-const App = (props) => {
-  // const [products, setProducts] = useState();
-  console.log(props);
-  const [products, setProducts] = useState ([]);
-  useEffect (() => {
+const App = () => {
+  const [products, setProducts] = useState([]);
+  useEffect(() => {
     axios
-    .get('https://amp-node-api.herokuapp.com/api/market/')
-    .then (response => {
+      .get('https://amp-node-api.herokuapp.com/api/market/')
+      .then(response => {
         console.log(response.data);
         setProducts(response.data)
-    })
-    .catch(error => console.log("Error!", error))
-}, []);
-
-
-
-
-
+      })
+      .catch(error => console.log("Error!", error))
+  }, []);
   return (
+    <MarketProvider>
     <Router>
         <Navbar>
             <NavbarBrand><Link to='/'>AFRICAN MARKET PLACE 2</Link></NavbarBrand>
@@ -77,6 +72,7 @@ const App = (props) => {
         <Route exact path="/login" render={(props) => <Login {...props} />} />
       </Switch>
     </Router>
+    </MarketProvider>
   );
 }
 
