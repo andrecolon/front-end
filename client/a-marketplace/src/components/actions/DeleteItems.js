@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import axiosWithAuth from '../utils/axiosWithAuth'
-import { MarketContext } from '../context/MarketContext'
+import { MarketContext } from '../context/MarketContect'
 import { useParams, useHistory } from "react-router-dom";
 
 const DeleteItem = ({ prod, updatedProduct }) => {

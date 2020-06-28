@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import {MarketContext} from '../context/MarketContect'
 import axios from 'axios';
 
 const initialItem = {
     name: '',
-    price: '',
+    price: 0,
     location: '',
     description: ''
 };
 
 const UpdateForm = props => {
     const [item, setItem] = useState(initialItem);
+    const [products, setProducts] = useContext(MarketContext)
 
     const changeHandler = ev => {
         ev.persist();

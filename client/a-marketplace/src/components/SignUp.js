@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { Jumbotron, Card, CardImg, Form, FormGroup, Input, Label, Button, Dropdown, DropdownMenu } from 'reactstrap'
 import { Route, Link } from 'react-router-dom'
 import * as yup from 'yup'
-import axiosWithAuth from './utils/AxiosWithAuth';
+import axiosWithAuth from './utils/axiosWithAuth';
 import { useHistory } from "react-router-dom";
 
 const SignUp = () => {
