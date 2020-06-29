@@ -45,9 +45,6 @@ const ListPage = () => {
 
                 <div className="items-list-wrapper">
                     <ItemList items={products} />
-
-
-
                 </div>
             </Card>
 

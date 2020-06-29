@@ -7,7 +7,7 @@ import AddItems from './components/actions/AddItems';
 import ListPage from './components/ListPage';
 import ItemList from './components/ItemList';
 import PrivateRoute from "./components/utils/PrivateRoute";
-import { MarketProvider, MarketContext } from './components/context/MarketContect';
+import { MarketProvider } from './components/context/MarketContect';
 
 import axios from 'axios'
 
