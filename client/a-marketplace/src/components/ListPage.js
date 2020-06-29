@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect, useContext } from 'react';
-import { CardTitle, Card, Input, Button } from 'reactstrap';
+import { CardTitle, Card, Input, Button, FormGroup} from 'reactstrap';
 import { Route, Link } from 'react-router-dom'
 import ItemList from './ItemList';
 import OwnersList from './OwnersList';
@@ -33,10 +33,14 @@ const ListPage = () => {
                 <hr />
 
                 <Link to='/AddItems'>
-                    <Button>Add Items</Button>
+                    <FormGroup style={{padding:'10px'}}>
+                    <Button >Add Items</Button>
+                    </FormGroup>
                 </Link>
                 <Link to='/DeleteItem'>
+                    <FormGroup style={{padding:'10px'}}>
                     <Button>Delete Items</Button>
+                    </FormGroup>
                 </Link>
 
             </div>
