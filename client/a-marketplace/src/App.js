@@ -61,12 +61,9 @@ const App = () => {
        </Route>
 
        <Route exact path ='/'>
-         <ItemList items= {products}/>
+          <ItemList items={products}/>
        </Route>
 
-       {/* <Route exact path = '/ListPage'>
-      <ListPage />
-      </Route>  */}
       <Switch>
         <PrivateRoute exact path="/ListPage" component={ListPage} />
         <Route exact path="/login" render={(props) => <Login {...props} />} />

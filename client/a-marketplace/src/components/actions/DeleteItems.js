@@ -16,7 +16,7 @@ const DeleteItem = ({ prod, updatedProduct }) => {
         setItemToEdit(id);
     };
 
-    const deleteItem = prod => {
+    const deleteItem = () => {
         axiosWithAuth()
             .delete(`/market/${id}`)
             .then(res => {
@@ -34,15 +34,13 @@ const DeleteItem = ({ prod, updatedProduct }) => {
     return (
         <div>
             <ul>
-                {products.map(itm => (
+                {products.filter(itm => (
                     <li key={itm.id} onClick={() => editItem(prod)}>
                         <span>
                             <span className="delete" onClick={e => {
                                 e.stopPropagation();
                                 deleteItem(prod)
                             }
-
-
                             }>
 
                                 <p>{itm.item}</p>

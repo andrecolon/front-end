@@ -76,10 +76,7 @@ const SignUp = () => {
                 <legend>Confirm Password</legend>
                 <Input type = 'password' name = 'password' value = {formData.password} onChange = {handleChange}/> 
             </FormGroup>
-
-         <Link to= '/Login'>
-            <Button>Submit</Button>
-            </Link>
+                <Button>Submit</Button>
 
             <p className="forgot-password text-right">
                     Already registered <Link to = '/login' >sign in?</Link>

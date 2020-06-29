@@ -5,24 +5,26 @@ import { useParams, Route, useRouteMatch, Link } from 'react-router-dom';
 import axios from 'axios'
 import Card from './itemCard'
 import ItemList from './ItemList';
+import { MarketContext } from './context/MarketContect'
 
 
 
 
 
 const items = (props) => {
-    const [products, setProducts] = useState ();
+    // const [products, setProducts] = useState ();
+    const [products, setProducts] = useContext(MarketContext)
 
     const id = useParams ()
-    useEffect (() => {
-        axios
-        .get(`https://amp-node-api.herokuapp.com/api/market/${id.id}`)
-        .then (response => {
-            console.log(response.data);
-            setProducts(response.data)
-        })
-        .catch(error => console.log("Error!", error))
-    }, [id]);
+    // useEffect (() => {
+    //     axios
+    //     .get(`https://amp-node-api.herokuapp.com/api/market/${id.id}`)
+    //     .then (response => {
+    //         console.log(response.data);
+    //         setProducts(response.data)
+    //     })
+    //     .catch(error => console.log("Error!", error))
+    // }, [id]);
     
     if (!products) {
         return <div>Loading products...</div>;

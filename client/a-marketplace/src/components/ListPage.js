@@ -4,7 +4,6 @@ import { CardTitle, Card, Input, Button } from 'reactstrap';
 import { Route, Link } from 'react-router-dom'
 import ItemList from './ItemList';
 import OwnersList from './OwnersList';
-import axiosWithAuth from './utils/axiosWithAuth'
 import { MarketContext } from '../components/context/MarketContect'
 
 const ListPage = () => {
@@ -34,9 +33,6 @@ const ListPage = () => {
 
                 <Link to='/AddItems'>
                     <Button>Add Items</Button>
-                </Link>
-                <Link to='/DeleteItem'>
-                    <Button>Delete Items</Button>
                 </Link>
 
             </div>
