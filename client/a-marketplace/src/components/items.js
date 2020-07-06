@@ -1,31 +1,11 @@
-import React, { useState, useEffect} from "react";
-import { Link } from "react-router-dom";
-import styled from 'styled-components';
-import { useParams, Route, useRouteMatch, Link } from 'react-router-dom';
-import axios from 'axios'
-import Card from './itemCard'
-import ItemList from './ItemList';
-import { MarketContext } from './context/MarketContect'
+import React from "react";
+import { useParams } from 'react-router-dom';
+import { MarketContext } from './context/MarketContext'
 
-
-
-
-
-const items = (props) => {
-    // const [products, setProducts] = useState ();
+const items = () => {
     const [products, setProducts] = useContext(MarketContext)
+    const id = useParams()
 
-    const id = useParams ()
-    // useEffect (() => {
-    //     axios
-    //     .get(`https://amp-node-api.herokuapp.com/api/market/${id.id}`)
-    //     .then (response => {
-    //         console.log(response.data);
-    //         setProducts(response.data)
-    //     })
-    //     .catch(error => console.log("Error!", error))
-    // }, [id]);
-    
     if (!products) {
         return <div>Loading products...</div>;
       }

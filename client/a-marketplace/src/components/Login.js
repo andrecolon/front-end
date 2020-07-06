@@ -21,12 +21,11 @@ const Login = () => {
     const { push } = useHistory()
     const api_login = (loginData) => {
         axiosWithAuth()
-     
            .post('http://amp-node-api.herokuapp.com/api/auth/login', loginData)
             .then((res) => {
-                
                 localStorage.setItem("token", res.data.token);
-                push("/ListPage");
+               push("/ListPage");
+               //console.log(res.data.token)
 
             })
             .catch(err => {
@@ -37,7 +36,7 @@ const Login = () => {
     const handleChange = (e) => {
 
         setloginData({ ...loginData, [e.target.name]: e.target.value })
-        console.log(loginData)
+        //console.log(loginData)
     };
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -52,7 +51,6 @@ const Login = () => {
             <FormGroup style= {{margin:'0 auto', fontFamily:'Monoton', color:'#e74c3d',  marginLeft:'50px'}}>
                 <legend style= {{margin:'0 auto', marginBottom: '30px', postion: 'flex'}}>Login</legend>
             </FormGroup>
-                 {/* <h2>Log in to add new items</h2> */}
                  <FormGroup>
                 <Input placeholder="Username: testmin" type='username' name='username' onChange={handleChange} style={{ width: '75%', margin: '0 auto'}}></Input>
                 </FormGroup>
@@ -62,9 +60,7 @@ const Login = () => {
                 </FormGroup>
                 
                 <Button style = {{marginLeft:'200px'}}>login</Button>
-                {/* <Link to ='/ListPage'>
-                
-                </Link> */}
+
             </Form>
 
 

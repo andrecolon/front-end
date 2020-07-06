@@ -1,26 +1,21 @@
-import React, {useState, useEffect} from 'react'
-import styled from 'styled-components'
-import axios from 'axios'
+import React, { useContext} from 'react'
+import { MarketContext } from './context/MarketContext'
+
 
  
-const itemCard = ({id, name, description, location, price}) => {
-  
+const ItemCard = (items) => {
+  const [products, setProducts] = useContext(MarketContext);
+  const {item, location, description, price} = items
     return (
         
-        <div>
-       <p>Name:{name}</p>
+      <div className="item-card" style={{ padding: '25px' }} >
+        <h1>{items.item}</h1>
        
-       <p>Description: {description}</p>
-       <p>Location: {location}</p>
-       <p>Price: {price}</p> 
-       
-        {/* // {.map(prices => ( */}
-        {/* //    <div key ={prices} className = "item-price">
-        //        {prices}
-        //        </div>  */}
-       
+        <p>Description: {items.description}</p>
+        <p><strong>Location: {items.location}</strong></p>
+        <p>Price: {items.price}</p> 
        
       </div>
     )
 }
-export default itemCard;
+export default ItemCard;

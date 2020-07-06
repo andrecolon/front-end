@@ -1,23 +1,20 @@
 import React, { useState, useContext } from 'react'
-import { MarketContext } from '../context/MarketContect'
+import { MarketContext } from '../context/MarketContext'
 import axiosWithAuth from '../utils/axiosWithAuth'
 import { useHistory, useParams } from 'react-router-dom'
 import DeleteItem from './DeleteItems'
 
 
 function AddNew() {
-    const  push  = useHistory()
+    
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [description, setDescription] = useState('');
     const [location, setLocation] = useState('');
     const [newItem, setNewItem] = useState('')
     const [products, setProducts] = useContext(MarketContext);
-    const id = useParams()
-
-   // console.log("here is my added item ", products)
-
-
+    const {id} = useParams()
+    const {push} = useHistory()
     const updateName = e => {
         setName(e.target.value)
         //capture event, target and value from the inputs
@@ -39,12 +36,32 @@ function AddNew() {
             .then(res => setNewItem(res.data.data).history.push('/listpage'));
     }
 
-    const deleteMessage = id => {
+    // const deleteMessage = id => {
+    //     axiosWithAuth()
+    //         .delete(`market/${id}`)
+    //         .then(res => console.log(res.data, res.message))
+    //         .catch(err => console.log(err));
+    // };
+
+    const handleDelete = e => {
+       e.preventDefault()
         axiosWithAuth()
-            .delete(`market/${id}`)
-            .then(res => console.log(res.data, res.message))
-            .catch(err => console.log(err));
-    };
+            .delete(`market/${products.id}`)
+            .then(res => {
+                const updatedList = products.filter(itm => {
+                    if (itm.id === itm.id) {
+                        return products;
+                    }
+                    return itm;
+                });
+
+                setProducts(res.data)
+                push('/ListPage')
+            })
+            .catch(err => console.log(err.message, err.response))
+    }
+
+
     return (
         <>
         <form onSubmit={addProduct}>
@@ -57,13 +74,18 @@ function AddNew() {
         <div className="items-list-wrapper">
                 {products.map(itm => {
                 return (
-
+                    
                         <div className="item-card" key={itm.id} style={{ padding: '25px' }}  >
-                        <button onClick={deleteMessage()}>Delete me</button>
+                        <button onClick={() => handleDelete()}>Delete me</button>
                             <h1 >{itm.item}</h1>
                             <p>{itm.description}</p>
                             <p><strong>{itm.location}</strong></p>
                             <p>${itm.price}</p>
+                        <button onClick={() => push(`/update-form/${itm.id}`)}>
+                            Edit This  Item
+                                </button>
+                        
+
                         </div>
                         
                 );
