@@ -17,7 +17,7 @@ const ListPage = () => {
                     <CardImg style = {{width:'100%', margin:'0 auto', height:'200px'}} src={require ('../assets/img4.jpg')}/>
                     <Input type="file" style={{ marginTop: "200px", margin: "15%" }} />
                 </Card>
-
+            <OwnersList/>
                 <Link to='/AddItems'>
                     <FormGroup style={{padding:'10px'}}>
                     <Button >Edit Items</Button>

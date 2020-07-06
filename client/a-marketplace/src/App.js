@@ -11,6 +11,7 @@ import { MarketProvider } from './components/context/MarketContext';
 import UpdateItem from './components/actions/UpdateItem'
 
 import axios from 'axios'
+import ItemCard from './components/ItemCard';
 
 const App = () => {
   const [products, setProducts] = useState([]);
@@ -65,10 +66,13 @@ const App = () => {
           <ItemList />
        </Route>
     
-
+    <Route
+      path="/item-list/:id" render={(props) => <ItemCard {...props} products={products} setProducts={setProducts} />} />
+  
         <Route 
         path="/update-form/:id" 
-          render={(props) => <UpdateItem {...props} setProducts={setProducts}/>}
+        render={(props) => <UpdateItem {...props} 
+        setProducts={setProducts}/>}
          />
       <Switch>
         <PrivateRoute exact path="/ListPage" component={ListPage} />

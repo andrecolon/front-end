@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react'
 import { MarketContext } from '../context/MarketContext'
 import axiosWithAuth from '../utils/axiosWithAuth'
 import { useHistory, useParams } from 'react-router-dom'
-import DeleteItem from './DeleteItems'
 
 
 function AddNew() {
@@ -43,22 +42,12 @@ function AddNew() {
     //         .catch(err => console.log(err));
     // };
 
-    const handleDelete = e => {
-       e.preventDefault()
+    const handleDelete = () => {
+       
         axiosWithAuth()
             .delete(`market/${products.id}`)
-            .then(res => {
-                const updatedList = products.filter(itm => {
-                    if (itm.id === itm.id) {
-                        return products;
-                    }
-                    return itm;
-                });
-
-                setProducts(res.data)
-                push('/ListPage')
-            })
-            .catch(err => console.log(err.message, err.response))
+            .then(res => setProducts(res.data))
+            .catch(err => console.error(err.message, err.response))
     }
 
 
@@ -74,7 +63,7 @@ function AddNew() {
         <div className="items-list-wrapper">
                 {products.map(itm => {
                 return (
-                    
+
                         <div className="item-card" key={itm.id} style={{ padding: '25px' }}  >
                         <button onClick={() => handleDelete()}>Delete me</button>
                             <h1 >{itm.item}</h1>
