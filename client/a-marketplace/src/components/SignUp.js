@@ -27,8 +27,7 @@ const SignUp = () => {
     const submit = () => {
         // schema.validate(formData).then( () => {
             axiosWithAuth()
-            .post('https://amp-node-api.herokuapp.com/api/auth/register', 
-                ({ username: formData.name, password: formData.password, email:formData.email, value:formData.value }))
+            .post('https://amp-node-api.herokuapp.com/api/auth/register', formData)
                 .then((res) => {
                 console.log(res.data, 'This data')
                     localStorage.setItem("token", res.data.token);
@@ -76,10 +75,7 @@ const SignUp = () => {
                 <legend>Confirm Password</legend>
                 <Input type = 'password' name = 'password' value = {formData.password} onChange = {handleChange}/> 
             </FormGroup>
-
-         <Link to= '/Login'>
-            <Button>Submit</Button>
-            </Link>
+                <Button>Submit</Button>
 
             <p className="forgot-password text-right">
                     Already registered <Link to = '/login' >sign in?</Link>

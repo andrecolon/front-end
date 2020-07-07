@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import axiosWithAuth from '../utils/axiosWithAuth'
-import { MarketContext } from '../context/MarketContect'
+import { MarketContext } from '../context/MarketContext'
 import { useParams, useHistory } from "react-router-dom";
 
 const DeleteItem = ({ prod, updatedProduct }) => {
@@ -16,12 +16,13 @@ const DeleteItem = ({ prod, updatedProduct }) => {
         setItemToEdit(id);
     };
 
-    const deleteItem = prod => {
+    const deleteItem = () => {
         axiosWithAuth()
-            .delete(`/market/${id}`)
+            .delete(`/market/2`)
+            // .delete(`/market/${id}`)
             .then(res => {
                 axiosWithAuth()
-                    .get('/market')
+                    .get('market')
                     .then(res => {
                         console.log(res.data)
                         updatedProduct(res.data)
@@ -34,15 +35,13 @@ const DeleteItem = ({ prod, updatedProduct }) => {
     return (
         <div>
             <ul>
-                {products.map(itm => (
+                {products.filter(itm => (
                     <li key={itm.id} onClick={() => editItem(prod)}>
                         <span>
                             <span className="delete" onClick={e => {
                                 e.stopPropagation();
                                 deleteItem(prod)
                             }
-
-
                             }>
 
                                 <p>{itm.item}</p>
