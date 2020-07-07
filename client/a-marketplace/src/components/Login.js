@@ -23,7 +23,7 @@ const Login = () => {
         axiosWithAuth()
            .post('http://amp-node-api.herokuapp.com/api/auth/login', loginData)
             .then((res) => {
-                localStorage.setItem("token", res.data.token);
+                localStorage.setItem("token", res.data);
                push("/ListPage");
                //console.log(res.data.token)
 
