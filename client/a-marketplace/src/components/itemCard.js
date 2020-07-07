@@ -4,7 +4,7 @@ import { MarketContext } from './context/MarketContext'
 
  
 const ItemCard = (items) => {
-  const [products, setProducts] = useContext(MarketContext);
+  // const [products, setProducts] = useContext(MarketContext);
   const {item, location, description, price} = items
     return (
         
