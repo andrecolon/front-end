@@ -32,7 +32,7 @@ const UpdateForm = props => {
         axiosWithAuth()
             .put(`market/${products.id}`, products)
             .then(res => 
-                setProducts(res.data).history.push('/listpage'))
+                setProducts(res.data).history.push('/Listpage'))
             .catch(err => console.log(err.message, err.response))
     };
 
